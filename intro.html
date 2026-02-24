@@ -1,62 +1,135 @@
-<article class="bd-article">
+<!DOCTYPE html>
 
-<section class="tex2jax_ignore mathjax_ignore" id="analisis-data">
-<h1>📊 Analisis Data</h1>
+<html lang="en" data-content_root="" >
 
-<p><strong>Nama:</strong> Qomaruddin<br>
-<strong>NIM:</strong> 240411100128</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-<p>
-Selamat datang di project analisis data.  
-Halaman ini menampilkan hasil pengolahan data menggunakan Orange.
-</p>
+    <title>Analisis Data &#8212; My sample book</title>
 
-<hr>
+    <script data-cfasync="false">
+      document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    </script>
 
-<h2>📈 Hasil Statistik</h2>
+    <!-- Loaded before other Sphinx assets -->
+    <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+    <link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+    <link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-<p>Berikut adalah hasil perhitungan mean dan modus:</p>
+    <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-<table border="1" id="tabel-statistik" style="border-collapse: collapse; width: 100%;">
-    <thead>
-        <tr style="background:#f2f2f2;">
-            <th>Variabel</th>
-            <th>Mean</th>
-            <th>Modus</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td colspan="3" style="text-align:center;">Data belum dimuat</td>
-        </tr>
-    </tbody>
-</table>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
 
-<script>
-fetch('statistik.csv')
-    .then(response => response.text())
-    .then(data => {
-        const rows = data.split('\n');
-        const tbody = document.querySelector('#tabel-statistik tbody');
-        tbody.innerHTML = '';
+    <!-- Pre-loaded scripts that we'll load fully later -->
+    <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+    <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+    <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-        rows.forEach(row => {
-            if (row.trim() === '') return;
-            const tr = document.createElement('tr');
-            row.split(',').forEach(cell => {
-                const td = document.createElement('td');
-                td.textContent = cell;
-                tr.appendChild(td);
-            });
-            tbody.appendChild(tr);
-        });
-    })
-    .catch(() => {
-        document.querySelector('#tabel-statistik tbody').innerHTML =
-            '<tr><td colspan="3" style="text-align:center;color:red;">Gagal memuat statistik.csv</td></tr>';
-    });
-</script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
 
-</section>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
 
-</article>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+
+    <script src="_static/design-tabs.js"></script>
+
+    <script>
+      const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+      const thebe_selector = ".thebe,.cell"
+      const thebe_selector_input = "pre"
+      const thebe_selector_output = ".output, .cell_output"
+    </script>
+
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Business Understanding" href="business_understanding.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+
+  <body data-bs-spy="scroll"
+        data-bs-target=".bd-toc-nav"
+        data-offset="180"
+        data-bs-root-margin="0px 0px -60%"
+        data-default-mode="">
+
+    <main id="main-content" class="bd-main" role="main">
+      <div class="bd-content">
+        <div class="bd-article-container">
+
+          <div id="searchbox"></div>
+
+          <article class="bd-article">
+            <section class="tex2jax_ignore mathjax_ignore" id="analisis-data">
+              <h1>
+                Analisis Data
+                <a class="headerlink" href="#analisis-data" title="Permalink to this heading">#</a>
+              </h1>
+
+              <p>
+                <strong>Nama:</strong> Qomaruddin<br />
+                <strong>NIM:</strong> 240411100128
+              </p>
+
+              <p>Selamat datang di project analisis data.</p>
+
+              <div class="toctree-wrapper compound"></div>
+            </section>
+
+            <script type="text/x-thebe-config">
+              {
+                requestKernel: true,
+                binderOptions: {
+                  repo: "binder-examples/jupyter-stacks-datascience",
+                  ref: "master",
+                },
+                codeMirrorConfig: {
+                  theme: "abcdef",
+                  mode: "python"
+                },
+                kernelOptions: {
+                  name: "python3",
+                  path: "./."
+                },
+                predefinedOutput: true
+              }
+            </script>
+
+            <script>kernelName = 'python3'</script>
+
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+    <script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  </body>
+</html>
