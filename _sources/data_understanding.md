@@ -183,12 +183,74 @@ manhattan_dist = cityblock(point1, point2)
 
 print(f"Euclidean Distance: {euclidean_dist}")
 print(f"Manhattan Distance: {manhattan_dist}")
+```
+# Laporan Pengukuran Jarak pada Data Campuran Menggunakan Orange
+
+## 1. Pendahuluan
+Data campuran mencakup berbagai tipe data, seperti **numerik**, **ordinal**, dan **kategorikal**. Dalam tugas ini, kami melakukan analisis data campuran menggunakan **Orange Data Mining** untuk mengukur jarak antar data dengan berbagai tipe data dan kemudian melakukan klastering.
+
+Dataset yang digunakan adalah dataset **multivariat** yang mengandung data **kategorikal** (seperti nama kota dan negara bagian), **numerik** (seperti populasi dan pendapatan), dan **ordinal** (seperti kategori atau skor berdasarkan urutan tertentu).
+
+## 2. Persiapan Data
+Dataset yang digunakan mengandung beberapa kolom dengan tipe data yang berbeda. Berikut adalah struktur dataset:
+
+| **id** | **x1** (City) | **x2** (State) | **x3** (Population) | **x4** (Income) | ... |
+|--------|---------------|----------------|---------------------|-----------------|-----|
+| 1      | Los_Angeles   | CA             | 4060                | 8863164         | ... |
+| 2      | Cook          | IL             | 946                 | 5105067         | ... |
+| ...    | ...           | ...            | ...                 | ...             | ... |
+
+- **Kolom x1**: Nama kota (kategorikal).
+- **Kolom x2**: Negara bagian (kategorikal).
+- **Kolom x3 - x13**: Fitur numerik (misalnya, populasi, pendapatan).
+- **Kolom x14**: Data ordinal yang mengindikasikan kategori atau urutan.
+
+## 3. Langkah-langkah di Orange
+
+### a. Mengimpor Dataset
+Dataset diimpor menggunakan widget **File** di Orange. Setelah dataset dimuat, Anda dapat melihat dan memproses data lebih lanjut.
+
+### b. Mengonversi Data Ordinal
+Karena dataset mengandung data ordinal (misalnya, tingkat kepuasan yang bisa berupa **Low**, **Medium**, **High**), kami mengonversinya menjadi data **numerik**. Proses ini dilakukan menggunakan widget **Edit Domain** di Orange, yang memungkinkan kita untuk mengganti nilai ordinal dengan angka numerik, seperti:
+- **High** = 3
+- **Medium** = 2
+- **Low** = 1
+
+### c. Menghitung Jarak dengan Widget "Distance"
+Setelah data ordinal dikonversi menjadi numerik, kami menggunakan widget **Distance** di Orange untuk menghitung jarak antar data. Untuk data **numerik** seperti kolom **x3 - x13**, kami memilih **Euclidean Distance**. Untuk data **kategorikal** seperti **x1** (City) dan **x2** (State), kami memilih **Hamming Distance** untuk menghitung jarak antara kategori.
+
+### d. Klastering dengan Widget "k-Means"
+Dengan jarak yang telah dihitung, kami menggunakan widget **k-Means** untuk melakukan klastering pada dataset. Kami memilih **3 cluster** untuk mengelompokkan data berdasarkan kriteria yang relevan. Widget **k-Means** mengelompokkan data berdasarkan jarak antar titik data yang dihitung sebelumnya.
+
+### e. Visualisasi dengan Widget "Scatter Plot"
+Setelah klastering selesai, kami menggunakan widget **Scatter Plot** untuk memvisualisasikan hasil klastering. Visualisasi ini menunjukkan pemisahan data ke dalam 3 cluster berdasarkan jarak antar data.
+
+### f. Evaluasi Hasil dengan "Data Table"
+Untuk mengevaluasi hasil klastering, kami menggunakan widget **Data Table** untuk melihat informasi lebih lanjut tentang setiap data dan cluster yang diberikan oleh **k-Means**. Kolom **Cluster** menunjukkan hasil klastering (misalnya **C1**, **C2**, **C3**).
+
+## 4. Hasil Klastering
+Berdasarkan hasil klastering, data terkelompok dengan baik menjadi beberapa grup. Misalnya:
+- **C1**: Los Angeles, Cook, Harris
+- **C2**: San Diego, Orange, Wayne
+- **C3**: Dallas, San Bernardino, Alameda
+
+### Tabel Hasil Klastering:
+
+| **id** | **City**       | **Cluster** | **Silhouette** |
+|--------|----------------|-------------|----------------|
+| 1      | Los_Angeles    | C1          | 0.56           |
+| 2      | Cook           | C1          | 0.51           |
+| 3      | Harris         | C1          | 0.53           |
+| ...    | ...            | ...         | ...            |
+
+<br>
+![hasil](hasil_data_campuran.png)
+<br>
+
+## 5. Kesimpulan
+Melalui penggunaan **Orange Data Mining**, kami berhasil melakukan analisis jarak pada data campuran yang mencakup **data numerik**, **ordinal**, dan **kategorikal**. Kami mengonversi data ordinal menjadi numerik, menghitung jarak antar data menggunakan **Euclidean** dan **Hamming Distance**, dan kemudian melakukan klastering menggunakan **k-Means**. Hasil klastering menunjukkan pemisahan yang baik antar grup data.
+
+Dengan cara ini, **Orange** dapat digunakan untuk mengelompokkan data campuran dan menghasilkan informasi yang berguna untuk analisis lebih lanjut.
 
 
-## identifikasi data outlier
 
-## statistik diskriptif dari 
-
-## 1. kemampuan untuk menarik data
-
-## 2. mengukur jarak untuk data iris dengan manhatan / ecludian

@@ -176,6 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="business_understanding.html">Business Understanding</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Understanding</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="data_preparation.html">Data Preparation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modelling.html">Modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment</a></li>
@@ -377,6 +378,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Understanding</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antara-sepal-width-dan-sepal-length">Korelasi antara sepal_width dan sepal_length</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antara-petal-width-dan-petal-length">Korelasi antara petal_width dan petal_length</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antara-sepal-length-dan-petal-length">Korelasi antara sepal_length dan petal_length</a></li>
@@ -396,6 +398,28 @@ document.write(`
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#laporan-pengukuran-jarak-pada-data-campuran-menggunakan-orange">Laporan Pengukuran Jarak pada Data Campuran Menggunakan Orange</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">1. Pendahuluan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data">2. Persiapan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-di-orange">3. Langkah-langkah di Orange</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-mengimpor-dataset">a. Mengimpor Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-mengonversi-data-ordinal">b. Mengonversi Data Ordinal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-menghitung-jarak-dengan-widget-distance">c. Menghitung Jarak dengan Widget “Distance”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-klastering-dengan-widget-k-means">d. Klastering dengan Widget “k-Means”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-visualisasi-dengan-widget-scatter-plot">e. Visualisasi dengan Widget “Scatter Plot”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-evaluasi-hasil-dengan-data-table">f. Evaluasi Hasil dengan “Data Table”</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-klastering">4. Hasil Klastering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-hasil-klastering">Tabel Hasil Klastering:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">5. Kesimpulan</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -598,18 +622,146 @@ d(x, y) = \frac{1}{n} \sum_{i=1}^{n} \text{Jarak untuk fitur i}
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Euclidean Distance: </span><span class="si">{</span><span class="n">euclidean_dist</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Manhattan Distance: </span><span class="si">{</span><span class="n">manhattan_dist</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-
-<span class="c1">## identifikasi data outlier</span>
-
-<span class="c1">## statistik diskriptif dari </span>
-
-<span class="c1">## 1. kemampuan untuk menarik data</span>
-
-<span class="c1">## 2. mengukur jarak untuk data iris dengan manhatan / ecludian</span>
 </pre></div>
 </div>
 </section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="laporan-pengukuran-jarak-pada-data-campuran-menggunakan-orange">
+<h1>Laporan Pengukuran Jarak pada Data Campuran Menggunakan Orange<a class="headerlink" href="#laporan-pengukuran-jarak-pada-data-campuran-menggunakan-orange" title="Permalink to this heading">#</a></h1>
+<section id="pendahuluan">
+<h2>1. Pendahuluan<a class="headerlink" href="#pendahuluan" title="Permalink to this heading">#</a></h2>
+<p>Data campuran mencakup berbagai tipe data, seperti <strong>numerik</strong>, <strong>ordinal</strong>, dan <strong>kategorikal</strong>. Dalam tugas ini, kami melakukan analisis data campuran menggunakan <strong>Orange Data Mining</strong> untuk mengukur jarak antar data dengan berbagai tipe data dan kemudian melakukan klastering.</p>
+<p>Dataset yang digunakan adalah dataset <strong>multivariat</strong> yang mengandung data <strong>kategorikal</strong> (seperti nama kota dan negara bagian), <strong>numerik</strong> (seperti populasi dan pendapatan), dan <strong>ordinal</strong> (seperti kategori atau skor berdasarkan urutan tertentu).</p>
+</section>
+<section id="persiapan-data">
+<h2>2. Persiapan Data<a class="headerlink" href="#persiapan-data" title="Permalink to this heading">#</a></h2>
+<p>Dataset yang digunakan mengandung beberapa kolom dengan tipe data yang berbeda. Berikut adalah struktur dataset:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>id</strong></p></th>
+<th class="head"><p><strong>x1</strong> (City)</p></th>
+<th class="head"><p><strong>x2</strong> (State)</p></th>
+<th class="head"><p><strong>x3</strong> (Population)</p></th>
+<th class="head"><p><strong>x4</strong> (Income)</p></th>
+<th class="head"><p>…</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Los_Angeles</p></td>
+<td><p>CA</p></td>
+<td><p>4060</p></td>
+<td><p>8863164</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Cook</p></td>
+<td><p>IL</p></td>
+<td><p>946</p></td>
+<td><p>5105067</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p><strong>Kolom x1</strong>: Nama kota (kategorikal).</p></li>
+<li><p><strong>Kolom x2</strong>: Negara bagian (kategorikal).</p></li>
+<li><p><strong>Kolom x3 - x13</strong>: Fitur numerik (misalnya, populasi, pendapatan).</p></li>
+<li><p><strong>Kolom x14</strong>: Data ordinal yang mengindikasikan kategori atau urutan.</p></li>
+</ul>
+</section>
+<section id="langkah-langkah-di-orange">
+<h2>3. Langkah-langkah di Orange<a class="headerlink" href="#langkah-langkah-di-orange" title="Permalink to this heading">#</a></h2>
+<section id="a-mengimpor-dataset">
+<h3>a. Mengimpor Dataset<a class="headerlink" href="#a-mengimpor-dataset" title="Permalink to this heading">#</a></h3>
+<p>Dataset diimpor menggunakan widget <strong>File</strong> di Orange. Setelah dataset dimuat, Anda dapat melihat dan memproses data lebih lanjut.</p>
+</section>
+<section id="b-mengonversi-data-ordinal">
+<h3>b. Mengonversi Data Ordinal<a class="headerlink" href="#b-mengonversi-data-ordinal" title="Permalink to this heading">#</a></h3>
+<p>Karena dataset mengandung data ordinal (misalnya, tingkat kepuasan yang bisa berupa <strong>Low</strong>, <strong>Medium</strong>, <strong>High</strong>), kami mengonversinya menjadi data <strong>numerik</strong>. Proses ini dilakukan menggunakan widget <strong>Edit Domain</strong> di Orange, yang memungkinkan kita untuk mengganti nilai ordinal dengan angka numerik, seperti:</p>
+<ul class="simple">
+<li><p><strong>High</strong> = 3</p></li>
+<li><p><strong>Medium</strong> = 2</p></li>
+<li><p><strong>Low</strong> = 1</p></li>
+</ul>
+</section>
+<section id="c-menghitung-jarak-dengan-widget-distance">
+<h3>c. Menghitung Jarak dengan Widget “Distance”<a class="headerlink" href="#c-menghitung-jarak-dengan-widget-distance" title="Permalink to this heading">#</a></h3>
+<p>Setelah data ordinal dikonversi menjadi numerik, kami menggunakan widget <strong>Distance</strong> di Orange untuk menghitung jarak antar data. Untuk data <strong>numerik</strong> seperti kolom <strong>x3 - x13</strong>, kami memilih <strong>Euclidean Distance</strong>. Untuk data <strong>kategorikal</strong> seperti <strong>x1</strong> (City) dan <strong>x2</strong> (State), kami memilih <strong>Hamming Distance</strong> untuk menghitung jarak antara kategori.</p>
+</section>
+<section id="d-klastering-dengan-widget-k-means">
+<h3>d. Klastering dengan Widget “k-Means”<a class="headerlink" href="#d-klastering-dengan-widget-k-means" title="Permalink to this heading">#</a></h3>
+<p>Dengan jarak yang telah dihitung, kami menggunakan widget <strong>k-Means</strong> untuk melakukan klastering pada dataset. Kami memilih <strong>3 cluster</strong> untuk mengelompokkan data berdasarkan kriteria yang relevan. Widget <strong>k-Means</strong> mengelompokkan data berdasarkan jarak antar titik data yang dihitung sebelumnya.</p>
+</section>
+<section id="e-visualisasi-dengan-widget-scatter-plot">
+<h3>e. Visualisasi dengan Widget “Scatter Plot”<a class="headerlink" href="#e-visualisasi-dengan-widget-scatter-plot" title="Permalink to this heading">#</a></h3>
+<p>Setelah klastering selesai, kami menggunakan widget <strong>Scatter Plot</strong> untuk memvisualisasikan hasil klastering. Visualisasi ini menunjukkan pemisahan data ke dalam 3 cluster berdasarkan jarak antar data.</p>
+</section>
+<section id="f-evaluasi-hasil-dengan-data-table">
+<h3>f. Evaluasi Hasil dengan “Data Table”<a class="headerlink" href="#f-evaluasi-hasil-dengan-data-table" title="Permalink to this heading">#</a></h3>
+<p>Untuk mengevaluasi hasil klastering, kami menggunakan widget <strong>Data Table</strong> untuk melihat informasi lebih lanjut tentang setiap data dan cluster yang diberikan oleh <strong>k-Means</strong>. Kolom <strong>Cluster</strong> menunjukkan hasil klastering (misalnya <strong>C1</strong>, <strong>C2</strong>, <strong>C3</strong>).</p>
+</section>
+</section>
+<section id="hasil-klastering">
+<h2>4. Hasil Klastering<a class="headerlink" href="#hasil-klastering" title="Permalink to this heading">#</a></h2>
+<p>Berdasarkan hasil klastering, data terkelompok dengan baik menjadi beberapa grup. Misalnya:</p>
+<ul class="simple">
+<li><p><strong>C1</strong>: Los Angeles, Cook, Harris</p></li>
+<li><p><strong>C2</strong>: San Diego, Orange, Wayne</p></li>
+<li><p><strong>C3</strong>: Dallas, San Bernardino, Alameda</p></li>
+</ul>
+<section id="tabel-hasil-klastering">
+<h3>Tabel Hasil Klastering:<a class="headerlink" href="#tabel-hasil-klastering" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>id</strong></p></th>
+<th class="head"><p><strong>City</strong></p></th>
+<th class="head"><p><strong>Cluster</strong></p></th>
+<th class="head"><p><strong>Silhouette</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Los_Angeles</p></td>
+<td><p>C1</p></td>
+<td><p>0.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Cook</p></td>
+<td><p>C1</p></td>
+<td><p>0.51</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Harris</p></td>
+<td><p>C1</p></td>
+<td><p>0.53</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+![hasil](hasil_data_campuran.png)
+<br>
+</section>
+</section>
+<section id="kesimpulan">
+<h2>5. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Permalink to this heading">#</a></h2>
+<p>Melalui penggunaan <strong>Orange Data Mining</strong>, kami berhasil melakukan analisis jarak pada data campuran yang mencakup <strong>data numerik</strong>, <strong>ordinal</strong>, dan <strong>kategorikal</strong>. Kami mengonversi data ordinal menjadi numerik, menghitung jarak antar data menggunakan <strong>Euclidean</strong> dan <strong>Hamming Distance</strong>, dan kemudian melakukan klastering menggunakan <strong>k-Means</strong>. Hasil klastering menunjukkan pemisahan yang baik antar grup data.</p>
+<p>Dengan cara ini, <strong>Orange</strong> dapat digunakan untuk mengelompokkan data campuran dan menghasilkan informasi yang berguna untuk analisis lebih lanjut.</p>
 </section>
 </section>
 
@@ -677,6 +829,7 @@ d(x, y) = \frac{1}{n} \sum_{i=1}^{n} \text{Jarak untuk fitur i}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Understanding</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antara-sepal-width-dan-sepal-length">Korelasi antara sepal_width dan sepal_length</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antara-petal-width-dan-petal-length">Korelasi antara petal_width dan petal_length</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antara-sepal-length-dan-petal-length">Korelasi antara sepal_length dan petal_length</a></li>
@@ -696,6 +849,28 @@ d(x, y) = \frac{1}{n} \sum_{i=1}^{n} \text{Jarak untuk fitur i}
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#laporan-pengukuran-jarak-pada-data-campuran-menggunakan-orange">Laporan Pengukuran Jarak pada Data Campuran Menggunakan Orange</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">1. Pendahuluan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data">2. Persiapan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-di-orange">3. Langkah-langkah di Orange</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-mengimpor-dataset">a. Mengimpor Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-mengonversi-data-ordinal">b. Mengonversi Data Ordinal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-menghitung-jarak-dengan-widget-distance">c. Menghitung Jarak dengan Widget “Distance”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-klastering-dengan-widget-k-means">d. Klastering dengan Widget “k-Means”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-visualisasi-dengan-widget-scatter-plot">e. Visualisasi dengan Widget “Scatter Plot”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-evaluasi-hasil-dengan-data-table">f. Evaluasi Hasil dengan “Data Table”</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-klastering">4. Hasil Klastering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-hasil-klastering">Tabel Hasil Klastering:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">5. Kesimpulan</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
