@@ -119,3 +119,76 @@ Standar Deviasi : 0.83
 Variansi        : 0.69
 <br>
 Nilai modus 5.0 dengan jumlah 10
+
+## 1. Mengukur Jarak dengan Tipe Data Campuran
+
+Data campuran mencakup dua tipe data yang berbeda:
+- **Numerik**: Misalnya, panjang kelopak bunga dalam dataset Iris.
+- **Kategorikal**: Misalnya, jenis spesies bunga dalam dataset Iris (Setosa, Versicolor, Virginica).
+
+Untuk mengukur jarak antara dua titik data yang memiliki tipe campuran, kita bisa menggunakan **Jarak Gower**. Berikut adalah cara kerjanya:
+- Untuk **data numerik**, jarak dihitung menggunakan **Jarak Euclidean**.
+- Untuk **data kategorikal**, jarak dihitung dengan **Jarak Hamming** (0 jika sama, 1 jika berbeda).
+- Kedua jarak ini kemudian digabungkan dengan bobot yang sesuai.
+
+**Formula Jarak Gower**:
+\[
+d(x, y) = \frac{1}{n} \sum_{i=1}^{n} \text{Jarak untuk fitur i}
+\]
+
+Untuk data numerik, kita bisa menggunakan **Euclidean** atau **Manhattan**, sementara untuk data kategorikal, kita menggunakan **Hamming**.
+
+---
+
+## 2. Analisis Menggunakan Orange Data Mining untuk Data Campuran
+
+**Orange** adalah alat visual untuk analisis data yang memungkinkan Anda untuk melakukan analisis data secara grafis. Berikut adalah langkah-langkah analisis menggunakan Orange:
+
+1. **Impor Dataset Iris**:
+   - Buka Orange, pilih widget **File** untuk memuat **Iris dataset**.
+   
+2. **Pilih Widget "Distance"** untuk memilih jenis jarak yang digunakan.
+   - Pilih **Euclidean** atau **Manhattan** untuk data numerik.
+   
+3. **Pilih Widget "k-Means"** untuk melakukan klastering berdasarkan jarak yang sudah dipilih.
+   - Gunakan **k-Means** untuk mengelompokkan data berdasarkan jarak.
+
+4. **Visualisasi dengan Widget "Scatter Plot"**:
+   - Visualisasikan hasil klastering dengan menggunakan widget **Scatter Plot** untuk melihat pemisahan data berdasarkan klaster.
+
+5. **Evaluasi dengan Widget "Data Table"** untuk melihat hasil clustering.
+
+---
+
+## 3. Implementasi Khusus untuk Dataset Iris
+
+### a. Menghitung Jarak Euclidean dan Manhattan pada Iris
+
+Berikut adalah contoh kode Python untuk menghitung **Jarak Euclidean** dan **Manhattan** antara dua titik dalam dataset Iris:
+
+```python
+from scipy.spatial.distance import euclidean, cityblock
+from sklearn.datasets import load_iris
+
+# Mengambil dataset Iris
+iris = load_iris()
+data = iris.data  # Data fitur iris
+
+# Menghitung jarak Euclidean dan Manhattan antara dua data
+point1 = data[0]  # Data pertama
+point2 = data[1]  # Data kedua
+
+euclidean_dist = euclidean(point1, point2)
+manhattan_dist = cityblock(point1, point2)
+
+print(f"Euclidean Distance: {euclidean_dist}")
+print(f"Manhattan Distance: {manhattan_dist}")
+
+
+## identifikasi data outlier
+
+## statistik diskriptif dari 
+
+## 1. kemampuan untuk menarik data
+
+## 2. mengukur jarak untuk data iris dengan manhatan / ecludian

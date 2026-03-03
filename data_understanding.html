@@ -389,6 +389,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-dengan-tipe-data-campuran">1. Mengukur Jarak dengan Tipe Data Campuran</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-menggunakan-orange-data-mining-untuk-data-campuran">2. Analisis Menggunakan Orange Data Mining untuk Data Campuran</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-khusus-untuk-dataset-iris">3. Implementasi Khusus untuk Dataset Iris</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-menghitung-jarak-euclidean-dan-manhattan-pada-iris">a. Menghitung Jarak Euclidean dan Manhattan pada Iris</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -523,6 +529,88 @@ Variansi        : 0.69
 Nilai modus 5.0 dengan jumlah 10</p>
 </section>
 </section>
+<section id="mengukur-jarak-dengan-tipe-data-campuran">
+<h2>1. Mengukur Jarak dengan Tipe Data Campuran<a class="headerlink" href="#mengukur-jarak-dengan-tipe-data-campuran" title="Permalink to this heading">#</a></h2>
+<p>Data campuran mencakup dua tipe data yang berbeda:</p>
+<ul class="simple">
+<li><p><strong>Numerik</strong>: Misalnya, panjang kelopak bunga dalam dataset Iris.</p></li>
+<li><p><strong>Kategorikal</strong>: Misalnya, jenis spesies bunga dalam dataset Iris (Setosa, Versicolor, Virginica).</p></li>
+</ul>
+<p>Untuk mengukur jarak antara dua titik data yang memiliki tipe campuran, kita bisa menggunakan <strong>Jarak Gower</strong>. Berikut adalah cara kerjanya:</p>
+<ul class="simple">
+<li><p>Untuk <strong>data numerik</strong>, jarak dihitung menggunakan <strong>Jarak Euclidean</strong>.</p></li>
+<li><p>Untuk <strong>data kategorikal</strong>, jarak dihitung dengan <strong>Jarak Hamming</strong> (0 jika sama, 1 jika berbeda).</p></li>
+<li><p>Kedua jarak ini kemudian digabungkan dengan bobot yang sesuai.</p></li>
+</ul>
+<p><strong>Formula Jarak Gower</strong>:
+[
+d(x, y) = \frac{1}{n} \sum_{i=1}^{n} \text{Jarak untuk fitur i}
+]</p>
+<p>Untuk data numerik, kita bisa menggunakan <strong>Euclidean</strong> atau <strong>Manhattan</strong>, sementara untuk data kategorikal, kita menggunakan <strong>Hamming</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="analisis-menggunakan-orange-data-mining-untuk-data-campuran">
+<h2>2. Analisis Menggunakan Orange Data Mining untuk Data Campuran<a class="headerlink" href="#analisis-menggunakan-orange-data-mining-untuk-data-campuran" title="Permalink to this heading">#</a></h2>
+<p><strong>Orange</strong> adalah alat visual untuk analisis data yang memungkinkan Anda untuk melakukan analisis data secara grafis. Berikut adalah langkah-langkah analisis menggunakan Orange:</p>
+<ol class="arabic simple">
+<li><p><strong>Impor Dataset Iris</strong>:</p>
+<ul class="simple">
+<li><p>Buka Orange, pilih widget <strong>File</strong> untuk memuat <strong>Iris dataset</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Pilih Widget “Distance”</strong> untuk memilih jenis jarak yang digunakan.</p>
+<ul class="simple">
+<li><p>Pilih <strong>Euclidean</strong> atau <strong>Manhattan</strong> untuk data numerik.</p></li>
+</ul>
+</li>
+<li><p><strong>Pilih Widget “k-Means”</strong> untuk melakukan klastering berdasarkan jarak yang sudah dipilih.</p>
+<ul class="simple">
+<li><p>Gunakan <strong>k-Means</strong> untuk mengelompokkan data berdasarkan jarak.</p></li>
+</ul>
+</li>
+<li><p><strong>Visualisasi dengan Widget “Scatter Plot”</strong>:</p>
+<ul class="simple">
+<li><p>Visualisasikan hasil klastering dengan menggunakan widget <strong>Scatter Plot</strong> untuk melihat pemisahan data berdasarkan klaster.</p></li>
+</ul>
+</li>
+<li><p><strong>Evaluasi dengan Widget “Data Table”</strong> untuk melihat hasil clustering.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="implementasi-khusus-untuk-dataset-iris">
+<h2>3. Implementasi Khusus untuk Dataset Iris<a class="headerlink" href="#implementasi-khusus-untuk-dataset-iris" title="Permalink to this heading">#</a></h2>
+<section id="a-menghitung-jarak-euclidean-dan-manhattan-pada-iris">
+<h3>a. Menghitung Jarak Euclidean dan Manhattan pada Iris<a class="headerlink" href="#a-menghitung-jarak-euclidean-dan-manhattan-pada-iris" title="Permalink to this heading">#</a></h3>
+<p>Berikut adalah contoh kode Python untuk menghitung <strong>Jarak Euclidean</strong> dan <strong>Manhattan</strong> antara dua titik dalam dataset Iris:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">euclidean</span><span class="p">,</span> <span class="n">cityblock</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_iris</span>
+
+<span class="c1"># Mengambil dataset Iris</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># Data fitur iris</span>
+
+<span class="c1"># Menghitung jarak Euclidean dan Manhattan antara dua data</span>
+<span class="n">point1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Data pertama</span>
+<span class="n">point2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Data kedua</span>
+
+<span class="n">euclidean_dist</span> <span class="o">=</span> <span class="n">euclidean</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">)</span>
+<span class="n">manhattan_dist</span> <span class="o">=</span> <span class="n">cityblock</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Euclidean Distance: </span><span class="si">{</span><span class="n">euclidean_dist</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Manhattan Distance: </span><span class="si">{</span><span class="n">manhattan_dist</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1">## identifikasi data outlier</span>
+
+<span class="c1">## statistik diskriptif dari </span>
+
+<span class="c1">## 1. kemampuan untuk menarik data</span>
+
+<span class="c1">## 2. mengukur jarak untuk data iris dengan manhatan / ecludian</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -599,6 +687,12 @@ Nilai modus 5.0 dengan jumlah 10</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-in-jupyter-book">data in jupyter book</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kode">Kode</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-dengan-tipe-data-campuran">1. Mengukur Jarak dengan Tipe Data Campuran</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-menggunakan-orange-data-mining-untuk-data-campuran">2. Analisis Menggunakan Orange Data Mining untuk Data Campuran</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-khusus-untuk-dataset-iris">3. Implementasi Khusus untuk Dataset Iris</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-menghitung-jarak-euclidean-dan-manhattan-pada-iris">a. Menghitung Jarak Euclidean dan Manhattan pada Iris</a></li>
 </ul>
 </li>
 </ul>
