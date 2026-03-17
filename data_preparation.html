@@ -181,9 +181,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="modelling.html">Modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
@@ -387,56 +384,60 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Normalisasi Data (Preprocessing)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-normalisasi-data">Pengertian Normalisasi Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-contoh">Data Contoh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#catatan-penting">Catatan Penting</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalization">1. Min-Max Normalization</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus">Rumus</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-penyelesaian">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-minimum-dan-maksimum-dari-seluruh-data-ipk">1. Menentukan nilai minimum dan maksimum (dari seluruh data IPK)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-normalisasi">2. Melakukan normalisasi</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-normalization">2. Z-Score Normalization</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Rumus</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rata-rata">1. Menghitung rata-rata (μ)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-standar-deviasi">2. Menghitung standar deviasi (σ)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-z-score">3. Menghitung Z-Score</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-normalisasi-data">METODE NORMALISASI DATA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalization">1. Min-Max Normalization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus">Rumus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-penyelesaian">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-minimum-dan-maksimum">1. Menentukan nilai minimum dan maksimum</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-normalisasi">2. Menghitung normalisasi</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-scaling">3. Decimal Scaling</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Rumus</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-maksimum">1. Menentukan nilai maksimum</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-j">2. Menentukan nilai j</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan">3. Perhitungan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-normalization">2. Z-Score Normalization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Rumus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rata-rata">1. Menghitung rata-rata (μ)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-standar-deviasi">2. Menghitung standar deviasi (σ)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-z-score">3. Menghitung Z-Score</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-missing-value-menggunakan-wknn">Penanganan Missing Value Menggunakan WKNN</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-scaling">3. Decimal Scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Rumus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-maksimum">1. Menentukan nilai maksimum</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-j">2. Menentukan nilai j</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3. Menghitung normalisasi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-missing-value-menggunakan-wknn">Handling Missing Value Menggunakan WKNN</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan">Tujuan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menggunakan-hasil-normalisasi-min-max">1. Menggunakan hasil normalisasi Min-Max</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-ke-data-lain">2. Menghitung jarak ke data lain</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan-jarak">3. Contoh perhitungan jarak</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-ke-data-ke-2">Jarak ke data ke-2:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-ke-data-ke-5">Jarak ke data ke-5:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-ke-data-lain">2. Menghitung jarak ke data lain</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan">Contoh perhitungan:</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-tetangga-terdekat">4. Menentukan tetangga terdekat</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-bobot">5. Menghitung bobot</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-jml">6. Menghitung nilai JML</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-tetangga-terdekat">3. Menentukan tetangga terdekat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-bobot">4. Menghitung bobot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-akhir">5. Menghitung nilai akhir</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir">Hasil Akhir</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir">Hasil Akhir</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -453,7 +454,7 @@ document.write(`
 <h1>Normalisasi Data (Preprocessing)<a class="headerlink" href="#normalisasi-data-preprocessing" title="Permalink to this heading">#</a></h1>
 <section id="pengertian-normalisasi-data">
 <h2>Pengertian Normalisasi Data<a class="headerlink" href="#pengertian-normalisasi-data" title="Permalink to this heading">#</a></h2>
-<p>Normalisasi data adalah proses mengubah nilai data ke dalam skala tertentu agar memiliki rentang yang seragam, sehingga tidak ada atribut yang mendominasi dalam proses analisis.</p>
+<p>Normalisasi data adalah proses mengubah nilai data ke dalam skala tertentu agar memiliki rentang yang seragam. Tujuannya adalah untuk menghindari dominasi atribut tertentu dan meningkatkan kinerja algoritma data mining.</p>
 </section>
 <hr class="docutils" />
 <section id="data-contoh">
@@ -506,158 +507,262 @@ document.write(`
 </table>
 </div>
 </section>
+<hr class="docutils" />
+<section id="catatan-penting">
+<h2>Catatan Penting<a class="headerlink" href="#catatan-penting" title="Permalink to this heading">#</a></h2>
+<p>Normalisasi dilakukan pada atribut IPK dan PO karena kedua atribut tersebut memiliki nilai lengkap.<br />
+Meskipun terdapat missing value pada atribut JML (data ke-7), proses normalisasi tetap dapat dilakukan karena tidak mempengaruhi atribut lain.</p>
+</section>
 </section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="min-max-normalization">
-<h1>1. Min-Max Normalization<a class="headerlink" href="#min-max-normalization" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="metode-normalisasi-data">
+<h1>METODE NORMALISASI DATA<a class="headerlink" href="#metode-normalisasi-data" title="Permalink to this heading">#</a></h1>
+<hr class="docutils" />
+<section id="min-max-normalization">
+<h2>1. Min-Max Normalization<a class="headerlink" href="#min-max-normalization" title="Permalink to this heading">#</a></h2>
 <section id="rumus">
-<h2>Rumus<a class="headerlink" href="#rumus" title="Permalink to this heading">#</a></h2>
+<h3>Rumus<a class="headerlink" href="#rumus" title="Permalink to this heading">#</a></h3>
 <p>X’ = (X - Xmin) / (Xmax - Xmin)</p>
 </section>
 <section id="langkah-penyelesaian">
-<h2>Langkah Penyelesaian<a class="headerlink" href="#langkah-penyelesaian" title="Permalink to this heading">#</a></h2>
-<section id="menentukan-nilai-minimum-dan-maksimum-dari-seluruh-data-ipk">
-<h3>1. Menentukan nilai minimum dan maksimum (dari seluruh data IPK)<a class="headerlink" href="#menentukan-nilai-minimum-dan-maksimum-dari-seluruh-data-ipk" title="Permalink to this heading">#</a></h3>
+<h3>Langkah Penyelesaian<a class="headerlink" href="#langkah-penyelesaian" title="Permalink to this heading">#</a></h3>
+<section id="menentukan-nilai-minimum-dan-maksimum">
+<h4>1. Menentukan nilai minimum dan maksimum<a class="headerlink" href="#menentukan-nilai-minimum-dan-maksimum" title="Permalink to this heading">#</a></h4>
 <p>Data IPK: 2, 3, 4, 2, 3, 4, 2</p>
 <ul class="simple">
-<li><p>Nilai minimum (Xmin) = 2</p></li>
-<li><p>Nilai maksimum (Xmax) = 4</p></li>
+<li><p>Xmin = 2</p></li>
+<li><p>Xmax = 4</p></li>
 </ul>
 </section>
-<hr class="docutils" />
-<section id="melakukan-normalisasi">
-<h3>2. Melakukan normalisasi<a class="headerlink" href="#melakukan-normalisasi" title="Permalink to this heading">#</a></h3>
-<p>Contoh perhitungan:</p>
-<ul class="simple">
-<li><p>Data ke-1 (IPK = 2):
-(2 - 2) / (4 - 2) = 0 / 2 = 0</p></li>
-<li><p>Data ke-2 (IPK = 3):
-(3 - 2) / (4 - 2) = 1 / 2 = 0.5</p></li>
-<li><p>Data ke-3 (IPK = 4):
-(4 - 2) / (4 - 2) = 2 / 2 = 1</p></li>
-</ul>
-<p>(Hasil yang sama berlaku untuk data lain dengan nilai IPK yang sama)</p>
+<section id="menghitung-normalisasi">
+<h4>2. Menghitung normalisasi<a class="headerlink" href="#menghitung-normalisasi" title="Permalink to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>IPK</p></th>
+<th class="head"><p>Perhitungan</p></th>
+<th class="head"><p>Hasil</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>(2-2)/(4-2)</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>(3-2)/(4-2)</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>(4-2)/(4-2)</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>(2-2)/(4-2)</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>3</p></td>
+<td><p>(3-2)/(4-2)</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p>(4-2)/(4-2)</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>2</p></td>
+<td><p>(2-2)/(4-2)</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 </section>
 </section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="z-score-normalization">
-<h1>2. Z-Score Normalization<a class="headerlink" href="#z-score-normalization" title="Permalink to this heading">#</a></h1>
+<section id="z-score-normalization">
+<h2>2. Z-Score Normalization<a class="headerlink" href="#z-score-normalization" title="Permalink to this heading">#</a></h2>
 <section id="id1">
-<h2>Rumus<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h3>Rumus<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Z = (X - μ) / σ</p>
 </section>
 <section id="id2">
-<h2>Langkah Penyelesaian<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h3>Langkah Penyelesaian<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <section id="menghitung-rata-rata">
-<h3>1. Menghitung rata-rata (μ)<a class="headerlink" href="#menghitung-rata-rata" title="Permalink to this heading">#</a></h3>
-<p>Data IPK: 2, 3, 4, 2, 3, 4, 2</p>
+<h4>1. Menghitung rata-rata (μ)<a class="headerlink" href="#menghitung-rata-rata" title="Permalink to this heading">#</a></h4>
 <p>μ = (2 + 3 + 4 + 2 + 3 + 4 + 2) / 7<br />
 μ = 20 / 7 = 2.86</p>
 </section>
-<hr class="docutils" />
 <section id="menghitung-standar-deviasi">
-<h3>2. Menghitung standar deviasi (σ)<a class="headerlink" href="#menghitung-standar-deviasi" title="Permalink to this heading">#</a></h3>
-<p>Selisih tiap data dengan rata-rata:</p>
-<ul class="simple">
-<li><p>(2 - 2.86)² = 0.74</p></li>
-<li><p>(3 - 2.86)² = 0.02</p></li>
-<li><p>(4 - 2.86)² = 1.30
-(dan seterusnya untuk semua data)</p></li>
-</ul>
-<p>Jumlah ≈ 4.86</p>
-<p>σ = √(4.86 / 7) ≈ 0.83</p>
+<h4>2. Menghitung standar deviasi (σ)<a class="headerlink" href="#menghitung-standar-deviasi" title="Permalink to this heading">#</a></h4>
+<p>σ ≈ 0.83</p>
 </section>
-<hr class="docutils" />
 <section id="menghitung-z-score">
-<h3>3. Menghitung Z-Score<a class="headerlink" href="#menghitung-z-score" title="Permalink to this heading">#</a></h3>
-<p>Contoh:</p>
-<ul class="simple">
-<li><p>Data ke-1 (IPK = 2):
-(2 - 2.86) / 0.83 = -1.04</p></li>
-<li><p>Data ke-2 (IPK = 3):
-(3 - 2.86) / 0.83 = 0.17</p></li>
-<li><p>Data ke-3 (IPK = 4):
-(4 - 2.86) / 0.83 = 1.37</p></li>
-</ul>
+<h4>3. Menghitung Z-Score<a class="headerlink" href="#menghitung-z-score" title="Permalink to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>IPK</p></th>
+<th class="head"><p>Perhitungan</p></th>
+<th class="head"><p>Hasil</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>(2-2.86)/0.83</p></td>
+<td><p>-1.04</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>(3-2.86)/0.83</p></td>
+<td><p>0.17</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>(4-2.86)/0.83</p></td>
+<td><p>1.37</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>(2-2.86)/0.83</p></td>
+<td><p>-1.04</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>3</p></td>
+<td><p>(3-2.86)/0.83</p></td>
+<td><p>0.17</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p>(4-2.86)/0.83</p></td>
+<td><p>1.37</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>2</p></td>
+<td><p>(2-2.86)/0.83</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 </section>
 </section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="decimal-scaling">
-<h1>3. Decimal Scaling<a class="headerlink" href="#decimal-scaling" title="Permalink to this heading">#</a></h1>
+<section id="decimal-scaling">
+<h2>3. Decimal Scaling<a class="headerlink" href="#decimal-scaling" title="Permalink to this heading">#</a></h2>
 <section id="id3">
-<h2>Rumus<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h3>Rumus<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>X’ = X / (10^j)</p>
 </section>
 <section id="id4">
-<h2>Langkah Penyelesaian<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h3>Langkah Penyelesaian<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <section id="menentukan-nilai-maksimum">
-<h3>1. Menentukan nilai maksimum<a class="headerlink" href="#menentukan-nilai-maksimum" title="Permalink to this heading">#</a></h3>
+<h4>1. Menentukan nilai maksimum<a class="headerlink" href="#menentukan-nilai-maksimum" title="Permalink to this heading">#</a></h4>
 <p>Nilai maksimum IPK = 4</p>
 </section>
 <section id="menentukan-nilai-j">
-<h3>2. Menentukan nilai j<a class="headerlink" href="#menentukan-nilai-j" title="Permalink to this heading">#</a></h3>
-<p>Karena 4 &lt; 10, maka j = 1</p>
+<h4>2. Menentukan nilai j<a class="headerlink" href="#menentukan-nilai-j" title="Permalink to this heading">#</a></h4>
+<p>Karena nilai maksimum &lt; 10, maka j = 1</p>
 </section>
-<section id="perhitungan">
-<h3>3. Perhitungan<a class="headerlink" href="#perhitungan" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Data ke-1 (IPK = 2):
-2 / 10 = 0.2</p></li>
-<li><p>Data ke-2 (IPK = 3):
-3 / 10 = 0.3</p></li>
-<li><p>Data ke-3 (IPK = 4):
-4 / 10 = 0.4</p></li>
-</ul>
+<section id="id5">
+<h4>3. Menghitung normalisasi<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>IPK</p></th>
+<th class="head"><p>Perhitungan</p></th>
+<th class="head"><p>Hasil</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>2/10</p></td>
+<td><p>0.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>3/10</p></td>
+<td><p>0.3</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>4/10</p></td>
+<td><p>0.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>2/10</p></td>
+<td><p>0.2</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>3</p></td>
+<td><p>3/10</p></td>
+<td><p>0.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p>4/10</p></td>
+<td><p>0.4</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>2</p></td>
+<td><p>2/10</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 </section>
 </section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="penanganan-missing-value-menggunakan-wknn">
-<h1>Penanganan Missing Value Menggunakan WKNN<a class="headerlink" href="#penanganan-missing-value-menggunakan-wknn" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="handling-missing-value-menggunakan-wknn">
+<h1>Handling Missing Value Menggunakan WKNN<a class="headerlink" href="#handling-missing-value-menggunakan-wknn" title="Permalink to this heading">#</a></h1>
 <section id="tujuan">
 <h2>Tujuan<a class="headerlink" href="#tujuan" title="Permalink to this heading">#</a></h2>
-<p>Menentukan nilai JML pada data ke-7 yang kosong.</p>
+<p>Menentukan nilai JML pada data ke-7 yang masih kosong.</p>
 </section>
 <hr class="docutils" />
-<section id="id5">
-<h2>Langkah Penyelesaian<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h2>Langkah Penyelesaian<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <section id="menggunakan-hasil-normalisasi-min-max">
 <h3>1. Menggunakan hasil normalisasi Min-Max<a class="headerlink" href="#menggunakan-hasil-normalisasi-min-max" title="Permalink to this heading">#</a></h3>
 <p>Data ke-7:</p>
 <ul class="simple">
-<li><p>IPK = 2 → hasil normalisasi = 0</p></li>
-<li><p>PO = 3000000 → hasil normalisasi = 0.5</p></li>
+<li><p>IPK = 2 → 0</p></li>
+<li><p>PO = 3000000 → 0.5</p></li>
 </ul>
 </section>
 <hr class="docutils" />
 <section id="menghitung-jarak-ke-data-lain">
 <h3>2. Menghitung jarak ke data lain<a class="headerlink" href="#menghitung-jarak-ke-data-lain" title="Permalink to this heading">#</a></h3>
-<p>Menggunakan rumus Euclidean:</p>
-<p>d = √((IPK1 - IPK2)² + (PO1 - PO2)²)</p>
-</section>
-<hr class="docutils" />
-<section id="contoh-perhitungan-jarak">
-<h3>3. Contoh perhitungan jarak<a class="headerlink" href="#contoh-perhitungan-jarak" title="Permalink to this heading">#</a></h3>
-<section id="jarak-ke-data-ke-2">
-<h4>Jarak ke data ke-2:<a class="headerlink" href="#jarak-ke-data-ke-2" title="Permalink to this heading">#</a></h4>
-<p>Data ke-2: (IPK = 0.5, PO = 0.5)</p>
-<p>d = √((0 - 0.5)² + (0.5 - 0.5)²)<br />
-d = √(0.25 + 0) = 0.5</p>
-</section>
-<hr class="docutils" />
-<section id="jarak-ke-data-ke-5">
-<h4>Jarak ke data ke-5:<a class="headerlink" href="#jarak-ke-data-ke-5" title="Permalink to this heading">#</a></h4>
-<p>Data ke-5: (IPK = 0.5, PO = 0.5)</p>
-<p>d = √((0 - 0.5)² + (0.5 - 0.5)²)<br />
+<p>Rumus:
+d = √((x1-x2)² + (y1-y2)²)</p>
+<section id="contoh-perhitungan">
+<h4>Contoh perhitungan:<a class="headerlink" href="#contoh-perhitungan" title="Permalink to this heading">#</a></h4>
+<p><strong>Ke data ke-2:</strong>
+(IPK = 0.5, PO = 0.5)<br />
+d = √((0-0.5)² + (0.5-0.5)²) = 0.5</p>
+<p><strong>Ke data ke-5:</strong>
+(IPK = 0.5, PO = 0.5)<br />
 d = 0.5</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="menentukan-tetangga-terdekat">
-<h3>4. Menentukan tetangga terdekat<a class="headerlink" href="#menentukan-tetangga-terdekat" title="Permalink to this heading">#</a></h3>
-<p>Dipilih 2 data dengan jarak terkecil:</p>
+<h3>3. Menentukan tetangga terdekat<a class="headerlink" href="#menentukan-tetangga-terdekat" title="Permalink to this heading">#</a></h3>
+<p>Dipilih:</p>
 <ul class="simple">
 <li><p>Data ke-2 (JML = 3)</p></li>
 <li><p>Data ke-5 (JML = 2)</p></li>
@@ -665,21 +770,19 @@ d = 0.5</p>
 </section>
 <hr class="docutils" />
 <section id="menghitung-bobot">
-<h3>5. Menghitung bobot<a class="headerlink" href="#menghitung-bobot" title="Permalink to this heading">#</a></h3>
-<p>Rumus:
-w = 1 / d</p>
+<h3>4. Menghitung bobot<a class="headerlink" href="#menghitung-bobot" title="Permalink to this heading">#</a></h3>
+<p>w = 1 / d</p>
 <ul class="simple">
-<li><p>Bobot data ke-2 = 1 / 0.5 = 2</p></li>
-<li><p>Bobot data ke-5 = 1 / 0.5 = 2</p></li>
+<li><p>w1 = 2</p></li>
+<li><p>w2 = 2</p></li>
 </ul>
 </section>
 <hr class="docutils" />
-<section id="menghitung-nilai-jml">
-<h3>6. Menghitung nilai JML<a class="headerlink" href="#menghitung-nilai-jml" title="Permalink to this heading">#</a></h3>
-<p>JML = ((2 × 3) + (2 × 2)) / (2 + 2)<br />
-JML = (6 + 4) / 4 = 2.5</p>
-<p>Karena JML berupa bilangan diskrit, maka dibulatkan menjadi:
-<strong>JML = 3</strong></p>
+<section id="menghitung-nilai-akhir">
+<h3>5. Menghitung nilai akhir<a class="headerlink" href="#menghitung-nilai-akhir" title="Permalink to this heading">#</a></h3>
+<p>JML = ((2×3) + (2×2)) / (2+2)<br />
+JML = 2.5</p>
+<p>Dibulatkan → <strong>JML = 3</strong></p>
 </section>
 </section>
 </section>
@@ -703,11 +806,11 @@ JML = (6 + 4) / 4 = 2.5</p>
 </tbody>
 </table>
 </div>
-</section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="kesimpulan">
-<h1>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Permalink to this heading">#</a></h1>
-<p>Setiap metode normalisasi memiliki cara perhitungan yang berbeda, namun bertujuan untuk menyamakan skala data. Untuk mengatasi missing value digunakan metode WKNN dengan mempertimbangkan jarak dan bobot dari data terdekat sehingga diperoleh hasil yang lebih representatif.</p>
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Permalink to this heading">#</a></h2>
+<p>Normalisasi dilakukan pada atribut yang memiliki data lengkap yaitu IPK dan PO menggunakan metode Min-Max, Z-Score, dan Decimal Scaling. Missing value pada atribut JML diselesaikan menggunakan metode WKNN berdasarkan kedekatan jarak dan bobot data terdekat.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -777,56 +880,60 @@ JML = (6 + 4) / 4 = 2.5</p>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Normalisasi Data (Preprocessing)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-normalisasi-data">Pengertian Normalisasi Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-contoh">Data Contoh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#catatan-penting">Catatan Penting</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalization">1. Min-Max Normalization</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus">Rumus</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-penyelesaian">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-minimum-dan-maksimum-dari-seluruh-data-ipk">1. Menentukan nilai minimum dan maksimum (dari seluruh data IPK)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-normalisasi">2. Melakukan normalisasi</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-normalization">2. Z-Score Normalization</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Rumus</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rata-rata">1. Menghitung rata-rata (μ)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-standar-deviasi">2. Menghitung standar deviasi (σ)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-z-score">3. Menghitung Z-Score</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-normalisasi-data">METODE NORMALISASI DATA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalization">1. Min-Max Normalization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus">Rumus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-penyelesaian">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-minimum-dan-maksimum">1. Menentukan nilai minimum dan maksimum</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-normalisasi">2. Menghitung normalisasi</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-scaling">3. Decimal Scaling</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Rumus</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-maksimum">1. Menentukan nilai maksimum</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-j">2. Menentukan nilai j</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan">3. Perhitungan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-normalization">2. Z-Score Normalization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Rumus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rata-rata">1. Menghitung rata-rata (μ)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-standar-deviasi">2. Menghitung standar deviasi (σ)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-z-score">3. Menghitung Z-Score</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-missing-value-menggunakan-wknn">Penanganan Missing Value Menggunakan WKNN</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-scaling">3. Decimal Scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Rumus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-maksimum">1. Menentukan nilai maksimum</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-j">2. Menentukan nilai j</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3. Menghitung normalisasi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-missing-value-menggunakan-wknn">Handling Missing Value Menggunakan WKNN</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan">Tujuan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Langkah Penyelesaian</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menggunakan-hasil-normalisasi-min-max">1. Menggunakan hasil normalisasi Min-Max</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-ke-data-lain">2. Menghitung jarak ke data lain</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan-jarak">3. Contoh perhitungan jarak</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-ke-data-ke-2">Jarak ke data ke-2:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-ke-data-ke-5">Jarak ke data ke-5:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-ke-data-lain">2. Menghitung jarak ke data lain</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan">Contoh perhitungan:</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-tetangga-terdekat">4. Menentukan tetangga terdekat</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-bobot">5. Menghitung bobot</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-jml">6. Menghitung nilai JML</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-tetangga-terdekat">3. Menentukan tetangga terdekat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-bobot">4. Menghitung bobot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-akhir">5. Menghitung nilai akhir</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir">Hasil Akhir</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir">Hasil Akhir</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>

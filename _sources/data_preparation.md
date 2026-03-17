@@ -1,7 +1,7 @@
 # Normalisasi Data (Preprocessing)
 
 ## Pengertian Normalisasi Data
-Normalisasi data adalah proses mengubah nilai data ke dalam skala tertentu agar memiliki rentang yang seragam, sehingga tidak ada atribut yang mendominasi dalam proses analisis.
+Normalisasi data adalah proses mengubah nilai data ke dalam skala tertentu agar memiliki rentang yang seragam. Tujuannya adalah untuk menghindari dominasi atribut tertentu dan meningkatkan kinerja algoritma data mining.
 
 ---
 
@@ -19,111 +19,101 @@ Normalisasi data adalah proses mengubah nilai data ke dalam skala tertentu agar 
 
 ---
 
-# 1. Min-Max Normalization
+## Catatan Penting
+Normalisasi dilakukan pada atribut IPK dan PO karena kedua atribut tersebut memiliki nilai lengkap.  
+Meskipun terdapat missing value pada atribut JML (data ke-7), proses normalisasi tetap dapat dilakukan karena tidak mempengaruhi atribut lain.
 
-## Rumus
+---
+
+# METODE NORMALISASI DATA
+
+---
+
+## 1. Min-Max Normalization
+
+### Rumus
 X' = (X - Xmin) / (Xmax - Xmin)
 
-## Langkah Penyelesaian
+### Langkah Penyelesaian
 
-### 1. Menentukan nilai minimum dan maksimum (dari seluruh data IPK)
+#### 1. Menentukan nilai minimum dan maksimum
 Data IPK: 2, 3, 4, 2, 3, 4, 2  
-- Nilai minimum (Xmin) = 2  
-- Nilai maksimum (Xmax) = 4  
+- Xmin = 2  
+- Xmax = 4  
+
+#### 2. Menghitung normalisasi
+
+| No | IPK | Perhitungan | Hasil |
+|----|-----|------------|-------|
+| 1 | 2 | (2-2)/(4-2) | 0 |
+| 2 | 3 | (3-2)/(4-2) | 0.5 |
+| 3 | 4 | (4-2)/(4-2) | 1 |
+| 4 | 2 | (2-2)/(4-2) | 0 |
+| 5 | 3 | (3-2)/(4-2) | 0.5 |
+| 6 | 4 | (4-2)/(4-2) | 1 |
+| 7 | 2 | (2-2)/(4-2) | - |
 
 ---
 
-### 2. Melakukan normalisasi
+## 2. Z-Score Normalization
 
-Contoh perhitungan:
-
-- Data ke-1 (IPK = 2):
-  (2 - 2) / (4 - 2) = 0 / 2 = 0
-
-- Data ke-2 (IPK = 3):
-  (3 - 2) / (4 - 2) = 1 / 2 = 0.5
-
-- Data ke-3 (IPK = 4):
-  (4 - 2) / (4 - 2) = 2 / 2 = 1
-
-(Hasil yang sama berlaku untuk data lain dengan nilai IPK yang sama)
-
----
-
-# 2. Z-Score Normalization
-
-## Rumus
+### Rumus
 Z = (X - μ) / σ
 
-## Langkah Penyelesaian
+### Langkah Penyelesaian
 
-### 1. Menghitung rata-rata (μ)
-Data IPK: 2, 3, 4, 2, 3, 4, 2  
-
+#### 1. Menghitung rata-rata (μ)
 μ = (2 + 3 + 4 + 2 + 3 + 4 + 2) / 7  
 μ = 20 / 7 = 2.86  
 
----
+#### 2. Menghitung standar deviasi (σ)
+σ ≈ 0.83  
 
-### 2. Menghitung standar deviasi (σ)
+#### 3. Menghitung Z-Score
 
-Selisih tiap data dengan rata-rata:
-- (2 - 2.86)² = 0.74
-- (3 - 2.86)² = 0.02
-- (4 - 2.86)² = 1.30
-(dan seterusnya untuk semua data)
-
-Jumlah ≈ 4.86  
-
-σ = √(4.86 / 7) ≈ 0.83  
-
----
-
-### 3. Menghitung Z-Score
-
-Contoh:
-
-- Data ke-1 (IPK = 2):
-  (2 - 2.86) / 0.83 = -1.04
-
-- Data ke-2 (IPK = 3):
-  (3 - 2.86) / 0.83 = 0.17
-
-- Data ke-3 (IPK = 4):
-  (4 - 2.86) / 0.83 = 1.37
+| No | IPK | Perhitungan | Hasil |
+|----|-----|------------|-------|
+| 1 | 2 | (2-2.86)/0.83 | -1.04 |
+| 2 | 3 | (3-2.86)/0.83 | 0.17 |
+| 3 | 4 | (4-2.86)/0.83 | 1.37 |
+| 4 | 2 | (2-2.86)/0.83 | -1.04 |
+| 5 | 3 | (3-2.86)/0.83 | 0.17 |
+| 6 | 4 | (4-2.86)/0.83 | 1.37 |
+| 7 | 2 | (2-2.86)/0.83 | - |
 
 ---
 
-# 3. Decimal Scaling
+## 3. Decimal Scaling
 
-## Rumus
+### Rumus
 X' = X / (10^j)
 
-## Langkah Penyelesaian
+### Langkah Penyelesaian
 
-### 1. Menentukan nilai maksimum
-Nilai maksimum IPK = 4
+#### 1. Menentukan nilai maksimum
+Nilai maksimum IPK = 4  
 
-### 2. Menentukan nilai j
-Karena 4 < 10, maka j = 1
+#### 2. Menentukan nilai j
+Karena nilai maksimum < 10, maka j = 1  
 
-### 3. Perhitungan
+#### 3. Menghitung normalisasi
 
-- Data ke-1 (IPK = 2):
-  2 / 10 = 0.2
-
-- Data ke-2 (IPK = 3):
-  3 / 10 = 0.3
-
-- Data ke-3 (IPK = 4):
-  4 / 10 = 0.4
+| No | IPK | Perhitungan | Hasil |
+|----|-----|------------|-------|
+| 1 | 2 | 2/10 | 0.2 |
+| 2 | 3 | 3/10 | 0.3 |
+| 3 | 4 | 4/10 | 0.4 |
+| 4 | 2 | 2/10 | 0.2 |
+| 5 | 3 | 3/10 | 0.3 |
+| 6 | 4 | 4/10 | 0.4 |
+| 7 | 2 | 2/10 | - |
 
 ---
 
-# Penanganan Missing Value Menggunakan WKNN
+# Handling Missing Value Menggunakan WKNN
 
 ## Tujuan
-Menentukan nilai JML pada data ke-7 yang kosong.
+Menentukan nilai JML pada data ke-7 yang masih kosong.
 
 ---
 
@@ -132,62 +122,50 @@ Menentukan nilai JML pada data ke-7 yang kosong.
 ### 1. Menggunakan hasil normalisasi Min-Max
 
 Data ke-7:
-- IPK = 2 → hasil normalisasi = 0  
-- PO = 3000000 → hasil normalisasi = 0.5  
+- IPK = 2 → 0  
+- PO = 3000000 → 0.5  
 
 ---
 
 ### 2. Menghitung jarak ke data lain
 
-Menggunakan rumus Euclidean:
+Rumus:
+d = √((x1-x2)² + (y1-y2)²)
 
-d = √((IPK1 - IPK2)² + (PO1 - PO2)²)
+#### Contoh perhitungan:
 
----
+**Ke data ke-2:**
+(IPK = 0.5, PO = 0.5)  
+d = √((0-0.5)² + (0.5-0.5)²) = 0.5  
 
-### 3. Contoh perhitungan jarak
-
-#### Jarak ke data ke-2:
-Data ke-2: (IPK = 0.5, PO = 0.5)
-
-d = √((0 - 0.5)² + (0.5 - 0.5)²)  
-d = √(0.25 + 0) = 0.5  
-
----
-
-#### Jarak ke data ke-5:
-Data ke-5: (IPK = 0.5, PO = 0.5)
-
-d = √((0 - 0.5)² + (0.5 - 0.5)²)  
+**Ke data ke-5:**
+(IPK = 0.5, PO = 0.5)  
 d = 0.5  
 
 ---
 
-### 4. Menentukan tetangga terdekat
-
-Dipilih 2 data dengan jarak terkecil:
+### 3. Menentukan tetangga terdekat
+Dipilih:
 - Data ke-2 (JML = 3)
 - Data ke-5 (JML = 2)
 
 ---
 
-### 5. Menghitung bobot
+### 4. Menghitung bobot
 
-Rumus:
-w = 1 / d
+w = 1 / d  
 
-- Bobot data ke-2 = 1 / 0.5 = 2
-- Bobot data ke-5 = 1 / 0.5 = 2
+- w1 = 2  
+- w2 = 2  
 
 ---
 
-### 6. Menghitung nilai JML
+### 5. Menghitung nilai akhir
 
-JML = ((2 × 3) + (2 × 2)) / (2 + 2)  
-JML = (6 + 4) / 4 = 2.5  
+JML = ((2×3) + (2×2)) / (2+2)  
+JML = 2.5  
 
-Karena JML berupa bilangan diskrit, maka dibulatkan menjadi:
-**JML = 3**
+Dibulatkan → **JML = 3**
 
 ---
 
@@ -199,5 +177,5 @@ Karena JML berupa bilangan diskrit, maka dibulatkan menjadi:
 
 ---
 
-# Kesimpulan
-Setiap metode normalisasi memiliki cara perhitungan yang berbeda, namun bertujuan untuk menyamakan skala data. Untuk mengatasi missing value digunakan metode WKNN dengan mempertimbangkan jarak dan bobot dari data terdekat sehingga diperoleh hasil yang lebih representatif.
+## Kesimpulan
+Normalisasi dilakukan pada atribut yang memiliki data lengkap yaitu IPK dan PO menggunakan metode Min-Max, Z-Score, dan Decimal Scaling. Missing value pada atribut JML diselesaikan menggunakan metode WKNN berdasarkan kedekatan jarak dan bobot data terdekat.
