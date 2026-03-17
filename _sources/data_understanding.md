@@ -242,9 +242,11 @@ Berdasarkan hasil klastering, data terkelompok dengan baik menjadi beberapa grup
 | 2      | Cook           | C1          | 0.51           |
 | 3      | Harris         | C1          | 0.53           |
 | ...    | ...            | ...         | ...            |
-
+`````
 <br>
+
 ![hasil](hasil_data_campuran.png)
+
 <br>
 
 ## 5. Kesimpulan

@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'data_understanding';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data Preparation" href="data_preparation.html" />
+    <link rel="next" title="Normalisasi Data (Preprocessing)" href="data_preparation.html" />
     <link rel="prev" title="Business Understanding" href="business_understanding.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -177,7 +177,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="business_understanding.html">Business Understanding</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Understanding</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="data_preparation.html">Data Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_preparation.html">Normalisasi Data (Preprocessing)</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="modelling.html">Modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
@@ -415,7 +416,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-hasil-klastering">Tabel Hasil Klastering:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">5. Kesimpulan</a></li>
 </ul>
 </li>
 </ul>
@@ -753,15 +753,22 @@ d(x, y) = \frac{1}{n} \sum_{i=1}^{n} \text{Jarak untuk fitur i}
 </tbody>
 </table>
 </div>
-<br>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;br&gt;
+
 ![hasil](hasil_data_campuran.png)
-<br>
+
+&lt;br&gt;
+
+## 5. Kesimpulan
+Melalui penggunaan **Orange Data Mining**, kami berhasil melakukan analisis jarak pada data campuran yang mencakup **data numerik**, **ordinal**, dan **kategorikal**. Kami mengonversi data ordinal menjadi numerik, menghitung jarak antar data menggunakan **Euclidean** dan **Hamming Distance**, dan kemudian melakukan klastering menggunakan **k-Means**. Hasil klastering menunjukkan pemisahan yang baik antar grup data.
+
+Dengan cara ini, **Orange** dapat digunakan untuk mengelompokkan data campuran dan menghasilkan informasi yang berguna untuk analisis lebih lanjut.
+
+
+
+</pre></div>
+</div>
 </section>
-</section>
-<section id="kesimpulan">
-<h2>5. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Permalink to this heading">#</a></h2>
-<p>Melalui penggunaan <strong>Orange Data Mining</strong>, kami berhasil melakukan analisis jarak pada data campuran yang mencakup <strong>data numerik</strong>, <strong>ordinal</strong>, dan <strong>kategorikal</strong>. Kami mengonversi data ordinal menjadi numerik, menghitung jarak antar data menggunakan <strong>Euclidean</strong> dan <strong>Hamming Distance</strong>, dan kemudian melakukan klastering menggunakan <strong>k-Means</strong>. Hasil klastering menunjukkan pemisahan yang baik antar grup data.</p>
-<p>Dengan cara ini, <strong>Orange</strong> dapat digunakan untuk mengelompokkan data campuran dan menghasilkan informasi yang berguna untuk analisis lebih lanjut.</p>
 </section>
 </section>
 
@@ -809,7 +816,7 @@ d(x, y) = \frac{1}{n} \sum_{i=1}^{n} \text{Jarak untuk fitur i}
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Preparation</p>
+        <p class="prev-next-title">Normalisasi Data (Preprocessing)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -866,7 +873,6 @@ d(x, y) = \frac{1}{n} \sum_{i=1}^{n} \text{Jarak untuk fitur i}
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-hasil-klastering">Tabel Hasil Klastering:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">5. Kesimpulan</a></li>
 </ul>
 </li>
 </ul>
