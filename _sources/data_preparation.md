@@ -19,12 +19,6 @@ Normalisasi data adalah proses mengubah nilai data ke dalam skala tertentu agar 
 
 ---
 
-## Catatan Penting
-Normalisasi dilakukan pada atribut IPK dan PO karena kedua atribut tersebut memiliki nilai lengkap.  
-Meskipun terdapat missing value pada atribut JML (data ke-7), proses normalisasi tetap dapat dilakukan karena tidak mempengaruhi atribut lain.
-
----
-
 # METODE NORMALISASI DATA
 
 ---
