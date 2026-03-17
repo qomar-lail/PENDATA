@@ -1,11 +1,11 @@
 # Normalisasi Data (Preprocessing)
 
 ## Pengertian Normalisasi Data
-Normalisasi data adalah proses mengubah nilai data ke dalam skala tertentu agar memiliki rentang yang seragam. Tujuannya adalah untuk menghindari dominasi atribut tertentu dan meningkatkan kinerja algoritma data mining.
+Normalisasi data adalah proses mengubah nilai data ke dalam skala tertentu agar memiliki rentang yang seragam sehingga mempermudah proses analisis dan perhitungan.
 
 ---
 
-## Data Contoh
+## Data Awal
 
 | No | IPK | PO | JML |
 |----|-----|--------|-----|
@@ -28,24 +28,62 @@ Normalisasi data adalah proses mengubah nilai data ke dalam skala tertentu agar 
 ### Rumus
 X' = (X - Xmin) / (Xmax - Xmin)
 
-### Langkah Penyelesaian
+---
 
-#### 1. Menentukan nilai minimum dan maksimum
-Data IPK: 2, 3, 4, 2, 3, 4, 2  
+### Nilai Minimum dan Maksimum
+IPK:
 - Xmin = 2  
 - Xmax = 4  
 
-#### 2. Menghitung normalisasi
+PO:
+- Xmin = 2000000  
+- Xmax = 4000000  
 
-| No | IPK | Perhitungan | Hasil |
-|----|-----|------------|-------|
-| 1 | 2 | (2-2)/(4-2) | 0 |
-| 2 | 3 | (3-2)/(4-2) | 0.5 |
-| 3 | 4 | (4-2)/(4-2) | 1 |
-| 4 | 2 | (2-2)/(4-2) | 0 |
-| 5 | 3 | (3-2)/(4-2) | 0.5 |
-| 6 | 4 | (4-2)/(4-2) | 1 |
-| 7 | 2 | (2-2)/(4-2) | - |
+JML:
+- Xmin = 2  
+- Xmax = 3  
+
+---
+
+### Contoh Perhitungan
+
+Data ke-1:
+
+IPK:
+X' = (2 - 2) / (4 - 2) = 0 / 2 = 0  
+
+PO:
+X' = (2000000 - 2000000) / (4000000 - 2000000) = 0 / 2000000 = 0  
+
+JML:
+X' = (2 - 2) / (3 - 2) = 0 / 1 = 0  
+
+---
+
+Data ke-2:
+
+IPK:
+X' = (3 - 2) / (4 - 2) = 1 / 2 = 0.5  
+
+PO:
+X' = (3000000 - 2000000) / (4000000 - 2000000) = 1000000 / 2000000 = 0.5  
+
+JML:
+X' = (3 - 2) / (3 - 2) = 1 / 1 = 1  
+
+---
+
+### Hasil Normalisasi Min-Max
+
+| No | IPK | PO | JML |
+|----|-----|-----|-----|
+| 1 | 0   | 0   | 0 |
+| 2 | 0.5 | 0.5 | 1 |
+| 3 | 1   | 0   | 0 |
+| 4 | 0   | 0   | 1 |
+| 5 | 0.5 | 0.5 | 0 |
+| 6 | 1   | 1   | 1 |
+| 7 | 0   | 0.5 | - |
 
 ---
 
@@ -54,26 +92,44 @@ Data IPK: 2, 3, 4, 2, 3, 4, 2
 ### Rumus
 Z = (X - μ) / σ
 
-### Langkah Penyelesaian
+---
 
-#### 1. Menghitung rata-rata (μ)
-μ = (2 + 3 + 4 + 2 + 3 + 4 + 2) / 7  
-μ = 20 / 7 = 2.86  
+### Perhitungan Rata-rata (μ)
 
-#### 2. Menghitung standar deviasi (σ)
-σ ≈ 0.83  
+IPK:
+μ = (2+3+4+2+3+4+2) / 7 = 20 / 7 = 2.86  
 
-#### 3. Menghitung Z-Score
+PO:
+μ = (2+3+2+2+3+4+3) / 7 = 19 / 7 = 2.71  
 
-| No | IPK | Perhitungan | Hasil |
-|----|-----|------------|-------|
-| 1 | 2 | (2-2.86)/0.83 | -1.04 |
-| 2 | 3 | (3-2.86)/0.83 | 0.17 |
-| 3 | 4 | (4-2.86)/0.83 | 1.37 |
-| 4 | 2 | (2-2.86)/0.83 | -1.04 |
-| 5 | 3 | (3-2.86)/0.83 | 0.17 |
-| 6 | 4 | (4-2.86)/0.83 | 1.37 |
-| 7 | 2 | (2-2.86)/0.83 | - |
+JML:
+μ = (2+3+2+3+2+3) / 6 = 15 / 6 = 2.5  
+
+---
+
+### Contoh Perhitungan
+
+Data ke-1 (IPK):
+
+Z = (2 - 2.86) / 0.83 = -0.86 / 0.83 = -1.04  
+
+Data ke-2 (JML):
+
+Z = (3 - 2.5) / 0.5 = 0.5 / 0.5 = 1  
+
+---
+
+### Hasil Normalisasi Z-Score
+
+| No | IPK | PO | JML |
+|----|------|------|------|
+| 1 | -1.04 | -1.04 | -1 |
+| 2 | 0.17  | 0.17  | 1 |
+| 3 | 1.37  | -1.04 | -1 |
+| 4 | -1.04 | -1.04 | 1 |
+| 5 | 0.17  | 0.17  | -1 |
+| 6 | 1.37  | 1.37  | 1 |
+| 7 | -1.04 | 0.17  | - |
 
 ---
 
@@ -82,94 +138,113 @@ Z = (X - μ) / σ
 ### Rumus
 X' = X / (10^j)
 
-### Langkah Penyelesaian
+---
 
-#### 1. Menentukan nilai maksimum
-Nilai maksimum IPK = 4  
+### Penentuan Nilai j
 
-#### 2. Menentukan nilai j
-Karena nilai maksimum < 10, maka j = 1  
+IPK:
+nilai maksimum = 4 → j = 1  
 
-#### 3. Menghitung normalisasi
+PO:
+nilai maksimum = 4000000 → j = 7  
 
-| No | IPK | Perhitungan | Hasil |
-|----|-----|------------|-------|
-| 1 | 2 | 2/10 | 0.2 |
-| 2 | 3 | 3/10 | 0.3 |
-| 3 | 4 | 4/10 | 0.4 |
-| 4 | 2 | 2/10 | 0.2 |
-| 5 | 3 | 3/10 | 0.3 |
-| 6 | 4 | 4/10 | 0.4 |
-| 7 | 2 | 2/10 | - |
+JML:
+nilai maksimum = 3 → j = 1  
+
+---
+
+### Contoh Perhitungan
+
+Data ke-1:
+
+IPK:
+X' = 2 / 10 = 0.2  
+
+PO:
+X' = 2000000 / 10^7 = 0.2  
+
+JML:
+X' = 2 / 10 = 0.2  
+
+---
+
+### Hasil Normalisasi Decimal Scaling
+
+| No | IPK | PO | JML |
+|----|-----|---------|-----|
+| 1 | 0.2 | 0.2 | 0.2 |
+| 2 | 0.3 | 0.3 | 0.3 |
+| 3 | 0.4 | 0.2 | 0.2 |
+| 4 | 0.2 | 0.2 | 0.3 |
+| 5 | 0.3 | 0.3 | 0.2 |
+| 6 | 0.4 | 0.4 | 0.3 |
+| 7 | 0.2 | 0.3 | - |
 
 ---
 
 # Handling Missing Value Menggunakan WKNN
 
-## Tujuan
-Menentukan nilai JML pada data ke-7 yang masih kosong.
-
----
-
-## Langkah Penyelesaian
-
-### 1. Menggunakan hasil normalisasi Min-Max
-
+## Langkah 1: Data yang digunakan
 Data ke-7:
-- IPK = 2 → 0  
-- PO = 3000000 → 0.5  
+IPK = 0  
+PO = 0.5  
 
 ---
 
-### 2. Menghitung jarak ke data lain
+## Langkah 2: Menghitung jarak
 
 Rumus:
 d = √((x1-x2)² + (y1-y2)²)
 
-#### Contoh perhitungan:
+---
 
-**Ke data ke-2:**
-(IPK = 0.5, PO = 0.5)  
-d = √((0-0.5)² + (0.5-0.5)²) = 0.5  
+### Perhitungan
 
-**Ke data ke-5:**
-(IPK = 0.5, PO = 0.5)  
+Ke data ke-2:
+
+d = √((0 - 0.5)² + (0.5 - 0.5)²)  
+d = √(0.25 + 0)  
+d = 0.5  
+
+Ke data ke-5:
+
+d = √((0 - 0.5)² + (0.5 - 0.5)²)  
+d = √(0.25 + 0)  
 d = 0.5  
 
 ---
 
-### 3. Menentukan tetangga terdekat
-Dipilih:
-- Data ke-2 (JML = 3)
-- Data ke-5 (JML = 2)
+## Langkah 3: Menghitung bobot
 
----
-
-### 4. Menghitung bobot
-
+Rumus:
 w = 1 / d  
 
-- w1 = 2  
-- w2 = 2  
+w2 = 1 / 0.5 = 2  
+w5 = 1 / 0.5 = 2  
 
 ---
 
-### 5. Menghitung nilai akhir
+## Langkah 4: Menghitung nilai JML (normalisasi)
 
-JML = ((2×3) + (2×2)) / (2+2)  
-JML = 2.5  
+JML = ((2×1) + (2×0)) / (2+2)  
+JML = 2 / 4 = 0.5  
 
-Dibulatkan → **JML = 3**
+---
+
+## Langkah 5: Denormalisasi
+
+Rumus:
+X = X' × (max - min) + min  
+
+JML = 0.5 × (3 - 2) + 2  
+JML = 0.5 + 2 = 2.5  
+
+Dibulatkan menjadi 3
 
 ---
 
 # Hasil Akhir
 
 | No | IPK | PO | JML |
-|----|-----|-----|-----|
+|----|-----|--------|-----|
 | 7 | 2 | 3000000 | 3 |
-
----
-
-## Kesimpulan
-Normalisasi dilakukan pada atribut yang memiliki data lengkap yaitu IPK dan PO menggunakan metode Min-Max, Z-Score, dan Decimal Scaling. Missing value pada atribut JML diselesaikan menggunakan metode WKNN berdasarkan kedekatan jarak dan bobot data terdekat.
