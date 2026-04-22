@@ -1,4 +1,3 @@
-# uts
 # 🌱 Analisis Klasifikasi Kesuburan Tanah Menggunakan KNN
 
 ## 1. Pendahuluan
