@@ -16,6 +16,9 @@ Dataset terdiri dari beberapa fitur penting seperti:
 - Kadar air
 - Bulk density
 
+### 📸 data_tanah
+![data](data_tanah.png)
+
 ---
 
 ## 2. Preprocessing Data
@@ -76,45 +79,3 @@ Confusion Matrix menunjukkan performa model dalam klasifikasi.
 ### 📸 Confusion Matrix
 ![Confusion Matrix](hasil_matrik.png)
 
----
-
-## 6. Analisis
-
-Hasil akurasi yang sangat tinggi menunjukkan bahwa:
-
-- Data memiliki pola yang sangat jelas
-- Setiap fitur memiliki batas nilai yang tegas antara kelas subur dan tidak subur
-
-Fitur seperti:
-- pH tanah
-- N, P, K
-- C-organik
-- KTK
-- Kadar air
-- Bulk density
-
-memiliki pengaruh langsung terhadap kesuburan tanah.
-
-Namun, hasil ini juga mengindikasikan bahwa:
-- Dataset kemungkinan terlalu ideal (tidak ada noise)
-- Label kemungkinan dibuat berdasarkan aturan tertentu (rule-based)
-
----
-
-## 7. Kesimpulan
-
-Model KNN mampu mengklasifikasikan kesuburan tanah dengan sangat baik pada dataset ini.
-
-Namun, performa yang sempurna (100%) kemungkinan tidak mencerminkan kondisi dunia nyata karena data terlalu terstruktur.
-
----
-
-## 8. Saran
-
-Untuk pengembangan selanjutnya:
-
-- Gunakan dataset yang lebih kompleks
-- Tambahkan variasi atau noise data
-- Bandingkan dengan metode lain seperti:
-  - Decision Tree
-  - Random Forest

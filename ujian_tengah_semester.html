@@ -385,7 +385,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">uts</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-klasifikasi-kesuburan-tanah-menggunakan-knn">🌱 Analisis Klasifikasi Kesuburan Tanah Menggunakan KNN</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">1. Pendahuluan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">1. Pendahuluan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-tanah">📸 data_tanah</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data">2. Preprocessing Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-preprocessing">📸 Hasil Preprocessing</a></li>
 </ul>
@@ -405,9 +408,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">📸 Confusion Matrix</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis">6. Analisis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">7. Kesimpulan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saran">8. Saran</a></li>
 </ul>
 </li>
 </ul>
@@ -443,6 +443,10 @@ document.write(`
 <li><p>Kadar air</p></li>
 <li><p>Bulk density</p></li>
 </ul>
+<section id="data-tanah">
+<h3>📸 data_tanah<a class="headerlink" href="#data-tanah" title="Permalink to this heading">#</a></h3>
+<p><img alt="data" src="_images/data_tanah.png" /></p>
+</section>
 </section>
 <hr class="docutils" />
 <section id="preprocessing-data">
@@ -515,51 +519,6 @@ document.write(`
 <p><img alt="Confusion Matrix" src="_images/hasil_matrik.png" /></p>
 </section>
 </section>
-<hr class="docutils" />
-<section id="analisis">
-<h2>6. Analisis<a class="headerlink" href="#analisis" title="Permalink to this heading">#</a></h2>
-<p>Hasil akurasi yang sangat tinggi menunjukkan bahwa:</p>
-<ul class="simple">
-<li><p>Data memiliki pola yang sangat jelas</p></li>
-<li><p>Setiap fitur memiliki batas nilai yang tegas antara kelas subur dan tidak subur</p></li>
-</ul>
-<p>Fitur seperti:</p>
-<ul class="simple">
-<li><p>pH tanah</p></li>
-<li><p>N, P, K</p></li>
-<li><p>C-organik</p></li>
-<li><p>KTK</p></li>
-<li><p>Kadar air</p></li>
-<li><p>Bulk density</p></li>
-</ul>
-<p>memiliki pengaruh langsung terhadap kesuburan tanah.</p>
-<p>Namun, hasil ini juga mengindikasikan bahwa:</p>
-<ul class="simple">
-<li><p>Dataset kemungkinan terlalu ideal (tidak ada noise)</p></li>
-<li><p>Label kemungkinan dibuat berdasarkan aturan tertentu (rule-based)</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="kesimpulan">
-<h2>7. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Permalink to this heading">#</a></h2>
-<p>Model KNN mampu mengklasifikasikan kesuburan tanah dengan sangat baik pada dataset ini.</p>
-<p>Namun, performa yang sempurna (100%) kemungkinan tidak mencerminkan kondisi dunia nyata karena data terlalu terstruktur.</p>
-</section>
-<hr class="docutils" />
-<section id="saran">
-<h2>8. Saran<a class="headerlink" href="#saran" title="Permalink to this heading">#</a></h2>
-<p>Untuk pengembangan selanjutnya:</p>
-<ul class="simple">
-<li><p>Gunakan dataset yang lebih kompleks</p></li>
-<li><p>Tambahkan variasi atau noise data</p></li>
-<li><p>Bandingkan dengan metode lain seperti:</p>
-<ul>
-<li><p>Decision Tree</p></li>
-<li><p>Random Forest</p></li>
-</ul>
-</li>
-</ul>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -628,7 +587,10 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">uts</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-klasifikasi-kesuburan-tanah-menggunakan-knn">🌱 Analisis Klasifikasi Kesuburan Tanah Menggunakan KNN</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">1. Pendahuluan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">1. Pendahuluan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-tanah">📸 data_tanah</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data">2. Preprocessing Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-preprocessing">📸 Hasil Preprocessing</a></li>
 </ul>
@@ -648,9 +610,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">📸 Confusion Matrix</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis">6. Analisis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">7. Kesimpulan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saran">8. Saran</a></li>
 </ul>
 </li>
 </ul>
