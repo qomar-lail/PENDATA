@@ -15,7 +15,7 @@ Dataset terdiri dari beberapa fitur penting seperti:
 - Kadar air
 - Bulk density
 
-### 📸 data_tanah
+### Data_tanah
 ![data](data_tanah.png)
 
 ---
@@ -24,7 +24,7 @@ Dataset terdiri dari beberapa fitur penting seperti:
 
 Tahapan preprocessing yang dilakukan:
 
-### seleksi data
+### Seleksi data
 ![seleksi_data](seleksi_data.png)
 memilih data yang relevan untuk mencapai target / dapat menarik kesimpulan yang akurat
 
@@ -34,7 +34,7 @@ memilih data yang relevan untuk mencapai target / dapat menarik kesimpulan yang 
 - Transformasi variabel kategorikal (tekstur tanah) menggunakan **one-hot encoding**
 - Pemisahan fitur dan label
 
-### 📸 Hasil Preprocessing
+### Hasil Preprocessing
 ![Preprocessing](normalisasi.png)
 
 ---
@@ -52,7 +52,7 @@ Model yang digunakan adalah **K-Nearest Neighbors (KNN)** dengan parameter:
 - **Euclidean** → Menghitung jarak lurus antar data  
 - **Distance Weight** → Tetangga yang lebih dekat lebih berpengaruh  
 
-### 📸 Setting KNN
+### Setting KNN
 ![KNN Setting](knn_setting.png)
 
 ---
@@ -67,7 +67,7 @@ Evaluasi dilakukan menggunakan **Cross Validation**.
 - Recall: **100%**
 - F1-Score: **100%**
 
-### 📸 Hasil Test & Score
+### Hasil Test & Score
 ![Test and Score](test_score.png)
 
 ---
@@ -81,6 +81,6 @@ Confusion Matrix menunjukkan performa model dalam klasifikasi.
 - Tidak Subur → 100% 
 - Tidak ada kesalahan klasifikasi
 
-### 📸 Confusion Matrix
+### Confusion Matrix
 ![Confusion Matrix](hasil_matrik.png)
 
