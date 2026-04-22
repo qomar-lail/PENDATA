@@ -24,6 +24,12 @@ Dataset terdiri dari beberapa fitur penting seperti:
 
 Tahapan preprocessing yang dilakukan:
 
+### seleksi data
+![seleksi_data](seleksi_data.png)
+memilih data yang relevan untuk mencapai target / dapat menarik kesimpulan yang akurat
+
+### mengisi missing value
+![setting_missing_value](setting_missing_value.png)
 - Normalisasi data numerik ke rentang **[0,1]**
 - Transformasi variabel kategorikal (tekstur tanah) menggunakan **one-hot encoding**
 - Pemisahan fitur dan label
