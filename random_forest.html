@@ -410,8 +410,8 @@ document.write(`
   <section id="random-forest">
 <h1>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h1>
 <br>
-<p><img alt="alt text" src="image-36.png" /></p>
-<br>
+<p><img alt="alt text" src="_images/forest.png" />
+<br></p>
 <p>Workflow ini digunakan untuk melakukan proses klasifikasi data menggunakan metode Random Forest pada KNIME Analytics Platform.</p>
 <p>Proses diawali dengan node CSV Reader untuk membaca dataset. Selanjutnya node Missing Value digunakan untuk menangani data yang kosong atau missing value pada dataset. Setelah itu, data dibagi menjadi data training dan data testing menggunakan node Table Partitioner dengan pembagian 70% data training dan 30% data testing.</p>
 <p>Node Random Forest Learner digunakan untuk membangun model klasifikasi Random Forest berdasarkan data training. Model yang telah dibuat kemudian digunakan oleh node Random Forest Predictor untuk melakukan prediksi terhadap data testing.</p>
@@ -482,7 +482,7 @@ document.write(`
 <section id="hasil-evaluasi-model-random-forest">
 <h2>Hasil Evaluasi Model Random Forest<a class="headerlink" href="#hasil-evaluasi-model-random-forest" title="Permalink to this heading">#</a></h2>
 <br>
-<p><img alt="alt text" src="image-37.png" /></p>
+<p><img alt="alt text" src="_images/hasil_forest.png" /></p>
 <br>
 <p>Berdasarkan hasil pengujian menggunakan node Scorer pada KNIME, model Random Forest menghasilkan performa klasifikasi yang sangat baik pada dataset Iris.</p>
 <section id="accuracy-statistics">

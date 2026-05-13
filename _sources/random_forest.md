@@ -2,8 +2,7 @@
 
 <br>
 
-![alt text](image-36.png)
-
+![alt text](forest.png)
 <br>
 
 Workflow ini digunakan untuk melakukan proses klasifikasi data menggunakan metode Random Forest pada KNIME Analytics Platform.
@@ -42,7 +41,7 @@ Kolom `species` digunakan sebagai target klasifikasi pada metode Random Forest, 
 
 <br>
 
-![alt text](image-37.png)
+![alt text](hasil_forest.png)
 
 
 <br>
