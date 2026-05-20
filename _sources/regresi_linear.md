@@ -1,4 +1,3 @@
-````md
 # Analisis Data Menggunakan Regresi Linier
 
 ## Data Titik
