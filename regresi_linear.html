@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Analisis Data Menggunakan Regresi Linier &#8212; Panambangan Data</title>
+    <title>regresi_linear &#8212; Panambangan Data</title>
   
   
   
@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'regresi_linear';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -187,11 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="naive_bayes.html">Perhitungan Naive-bayes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="decition_tree.html">Decision Tree Learner</a></li>
 <li class="toctree-l1"><a class="reference internal" href="random_forest.html">Random Forest</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analisis Data Menggunakan Regresi Linier</a></li>
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">regresi_linear</a></li>
 
 
 
@@ -391,7 +389,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Analisis Data Menggunakan Regresi Linier</h1>
+    <h1>regresi_linear</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -401,31 +399,25 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analisis Data Menggunakan Regresi Linier</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">regresi_linear</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-data-menggunakan-regresi-linier">Analisis Data Menggunakan Regresi Linier</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-titik">Data Titik</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-menggunakan-geogebra">Visualisasi Data Menggunakan GeoGebra</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#titik-di-geogebra">Titik di GeoGebra</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-regresi"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-titik-di-geogebra">Input Titik di GeoGebra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-garis-regresi">Membuat Garis Regresi</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian-regresi-linier">Penyelesaian Regresi Linier</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#membentuk-matriks-x-dan-y">Membentuk Matriks X dan Y</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-x-tx">Menghitung (X^TX)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-invers-x-tx-1">Menghitung Invers ((X^TX)^{-1})</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#x-tx-1">[
-(X^TX)^{-1}</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">[</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">[</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-x-ty">Menghitung (X^TY)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-koefisien-regresi">Menghitung Koefisien Regresi</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hat-beta">[
-\hat{\beta}</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">[</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">[
-\hat{\beta}</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#persamaan-regresi-linier">Persamaan Regresi Linier</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#program-python">Program Python</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
 
@@ -439,7 +431,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="analisis-data-menggunakan-regresi-linier">
+  <section class="tex2jax_ignore mathjax_ignore" id="regresi-linear">
+<h1>regresi_linear<a class="headerlink" href="#regresi-linear" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="analisis-data-menggunakan-regresi-linier">
 <h1>Analisis Data Menggunakan Regresi Linier<a class="headerlink" href="#analisis-data-menggunakan-regresi-linier" title="Permalink to this heading">#</a></h1>
 <section id="data-titik">
 <h2>Data Titik<a class="headerlink" href="#data-titik" title="Permalink to this heading">#</a></h2>
@@ -489,161 +484,194 @@ document.write(`
 <h1>Visualisasi Data Menggunakan GeoGebra<a class="headerlink" href="#visualisasi-data-menggunakan-geogebra" title="Permalink to this heading">#</a></h1>
 <section id="titik-di-geogebra">
 <h2>Titik di GeoGebra<a class="headerlink" href="#titik-di-geogebra" title="Permalink to this heading">#</a></h2>
+<p><img alt="data_regresi" src="_images/regresi_data.png" /></p>
 </section>
-<section id="data-regresi">
-<h2><img alt="data_regresi" src="_images/regresi_data.png" /><a class="headerlink" href="#data-regresi" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="input-titik-di-geogebra">
+<h2>Input Titik di GeoGebra<a class="headerlink" href="#input-titik-di-geogebra" title="Permalink to this heading">#</a></h2>
+<p>Masukkan titik berikut pada bagian Input GeoGebra:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>A=(2,2)
+B=(4,3)
+C=(5,5)
+D=(3,4)
+E=(3,3)
+F=(4,5)
+G=(5,6)
+</pre></div>
+</div>
+<p>📌 Input di atas digunakan untuk menampilkan scatter plot.</p>
+</section>
+<hr class="docutils" />
+<section id="membuat-garis-regresi">
+<h2>Membuat Garis Regresi<a class="headerlink" href="#membuat-garis-regresi" title="Permalink to this heading">#</a></h2>
+<p>Setelah semua titik muncul, masukkan perintah berikut:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FitLine({A,B,C,D,E,F,G})
+</pre></div>
+</div>
+<p>📌 Perintah tersebut digunakan untuk menghasilkan garis regresi linier pada GeoGebra.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="penyelesaian-regresi-linier">
 <h1>Penyelesaian Regresi Linier<a class="headerlink" href="#penyelesaian-regresi-linier" title="Permalink to this heading">#</a></h1>
 <p>Persamaan regresi linier:</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 y=\beta_0+\beta_1x
-]</p>
+\]</div>
 <p>Koefisien regresi dihitung menggunakan persamaan:</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 \hat{\beta}=(X^TX)^{-1}X^TY
-]</p>
+\]</div>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="membentuk-matriks-x-dan-y">
 <h1>Membentuk Matriks X dan Y<a class="headerlink" href="#membentuk-matriks-x-dan-y" title="Permalink to this heading">#</a></h1>
 <p>Matriks (X):</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[\begin{split}
 X=
 \begin{bmatrix}
-1 &amp; 2<br />
-1 &amp; 4<br />
-1 &amp; 5<br />
-1 &amp; 3<br />
-1 &amp; 3<br />
-1 &amp; 4<br />
+1 &amp; 2\\
+1 &amp; 4\\
+1 &amp; 5\\
+1 &amp; 3\\
+1 &amp; 3\\
+1 &amp; 4\\
 1 &amp; 5
 \end{bmatrix}
-]</p>
+\end{split}\]</div>
 <p>Matriks (Y):</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[\begin{split}
 Y=
 \begin{bmatrix}
-2<br />
-3<br />
-5<br />
-4<br />
-3<br />
-5<br />
+2\\
+3\\
+5\\
+4\\
+3\\
+5\\
 6
 \end{bmatrix}
-]</p>
+\end{split}\]</div>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="menghitung-x-tx">
 <h1>Menghitung (X^TX)<a class="headerlink" href="#menghitung-x-tx" title="Permalink to this heading">#</a></h1>
-<p>[
+<div class="math notranslate nohighlight">
+\[\begin{split}
 X^TX=
 \begin{bmatrix}
-7 &amp; 26<br />
+7 &amp; 26\\
 26 &amp; 104
 \end{bmatrix}
-]</p>
+\end{split}\]</div>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="menghitung-invers-x-tx-1">
 <h1>Menghitung Invers ((X^TX)^{-1})<a class="headerlink" href="#menghitung-invers-x-tx-1" title="Permalink to this heading">#</a></h1>
 <p>Rumus invers matriks 2×2:</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[\begin{split}
 A^{-1}=
 \frac{1}{ad-bc}
 \begin{bmatrix}
-d &amp; -b<br />
+d &amp; -b\\
 -c &amp; a
 \end{bmatrix}
-]</p>
+\end{split}\]</div>
 <p>Maka:</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="x-tx-1">
-<h1>[
-(X^TX)^{-1}<a class="headerlink" href="#x-tx-1" title="Permalink to this heading">#</a></h1>
-<p>\frac{1}{(7)(104)-(26)(26)}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+(X^TX)^{-1}
+=
+\frac{1}{(7)(104)-(26)(26)}
 \begin{bmatrix}
-104 &amp; -26<br />
+104 &amp; -26\\
 -26 &amp; 7
 \end{bmatrix}
-]</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>[<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p>\frac{1}{52}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+=
+\frac{1}{52}
 \begin{bmatrix}
-104 &amp; -26<br />
+104 &amp; -26\\
 -26 &amp; 7
 \end{bmatrix}
-]</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id2">
-<h1>[<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
-<p>\begin{bmatrix}
-2 &amp; -0.5<br />
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+=
+\begin{bmatrix}
+2 &amp; -0.5\\
 -0.5 &amp; 0.1346
 \end{bmatrix}
-]</p>
+\end{split}\]</div>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="menghitung-x-ty">
 <h1>Menghitung (X^TY)<a class="headerlink" href="#menghitung-x-ty" title="Permalink to this heading">#</a></h1>
-<p>[
+<div class="math notranslate nohighlight">
+\[\begin{split}
 X^TY=
 \begin{bmatrix}
-28<br />
+28\\
 111
 \end{bmatrix}
-]</p>
+\end{split}\]</div>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="menghitung-koefisien-regresi">
 <h1>Menghitung Koefisien Regresi<a class="headerlink" href="#menghitung-koefisien-regresi" title="Permalink to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="hat-beta">
-<h1>[
-\hat{\beta}<a class="headerlink" href="#hat-beta" title="Permalink to this heading">#</a></h1>
-<p>(X^TX)^{-1}X^TY
-]</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id3">
-<h1>[<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h1>
-<p>\begin{bmatrix}
-2 &amp; -0.5<br />
+<div class="math notranslate nohighlight">
+\[
+\hat{\beta}
+=
+(X^TX)^{-1}X^TY
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+=
+\begin{bmatrix}
+2 &amp; -0.5\\
 -0.5 &amp; 0.1346
 \end{bmatrix}
 \begin{bmatrix}
-28<br />
+28\\
 111
 \end{bmatrix}
-]</p>
+\end{split}\]</div>
 <p>Hasil:</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id4">
-<h1>[
-\hat{\beta}<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h1>
-<p>\begin{bmatrix}
-0.5<br />
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\hat{\beta}
+=
+\begin{bmatrix}
+0.5\\
 0.9423
 \end{bmatrix}
-]</p>
+\end{split}\]</div>
 <p>Sehingga diperoleh:</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 \beta_0 = 0.5
-]</p>
-<p>[
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 \beta_1 = 0.9423
-]</p>
+\]</div>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="persamaan-regresi-linier">
 <h1>Persamaan Regresi Linier<a class="headerlink" href="#persamaan-regresi-linier" title="Permalink to this heading">#</a></h1>
 <p>Persamaan regresi linier yang diperoleh adalah:</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 y = 0.5 + 0.9423x
-]</p>
+\]</div>
 <p>Interpretasi:</p>
 <ul class="simple">
 <li><p>Nilai intercept sebesar 0.5</p></li>
@@ -651,15 +679,315 @@ y = 0.5 + 0.9423x
 </ul>
 </section>
 <hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="program-python">
+<h1>Program Python<a class="headerlink" href="#program-python" title="Permalink to this heading">#</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># Data x dan y</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="c1"># Membuat model regresi</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># Training model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan hasil</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intercept :&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Koefisien :&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Persamaan regresi</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Persamaan regresi: y = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">x&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Intercept : 0.5
+Koefisien : 0.9423
+
+Persamaan regresi:
+y = 0.5000 + 0.9423x
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="kesimpulan">
 <h1>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Permalink to this heading">#</a></h1>
-<p>Berdasarkan hasil perhitungan regresi linier menggunakan metode analitik, diperoleh persamaan:</p>
-<p>[
+<p>Berdasarkan hasil perhitungan regresi linier menggunakan metode analitik dan program Python, diperoleh persamaan:</p>
+<div class="math notranslate nohighlight">
+\[
 y = 0.5 + 0.9423x
-]</p>
+\]</div>
 <p>Persamaan tersebut menunjukkan bahwa variabel (x) memiliki hubungan positif terhadap variabel (y).</p>
 <p><img alt="hasil" src="_images/garis_regresi.png" /></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>````md
+# Analisis Data Menggunakan Regresi Linier
+
+## Data Titik
+
+| Titik | x | y |
+|---|---|---|
+| A | 2 | 2 |
+| B | 4 | 3 |
+| C | 5 | 5 |
+| D | 3 | 4 |
+| E | 3 | 3 |
+| F | 4 | 5 |
+| G | 5 | 6 |
+
+---
+
+# Visualisasi Data Menggunakan GeoGebra
+
+## Titik di GeoGebra
+
+![data_regresi](regresi_data.png)
+
+---
+
+## Input Titik di GeoGebra
+
+Masukkan titik berikut pada bagian Input GeoGebra:
+
+```text
+A=(2,2)
+B=(4,3)
+C=(5,5)
+D=(3,4)
+E=(3,3)
+F=(4,5)
+G=(5,6)
+```
+
+📌 Input di atas digunakan untuk menampilkan scatter plot.
+
+---
+
+
+# Penyelesaian Regresi Linier
+
+Persamaan regresi linier:
+
+$$
+y=\beta_0+\beta_1x
+$$
+
+Koefisien regresi dihitung menggunakan persamaan:
+
+$$
+\hat{\beta}=(X^TX)^{-1}X^TY
+$$
+
+---
+
+# Membentuk Matriks X dan Y
+
+Matriks \(X\):
+
+$$
+X=
+\begin{bmatrix}
+1 &amp; 2\\
+1 &amp; 4\\
+1 &amp; 5\\
+1 &amp; 3\\
+1 &amp; 3\\
+1 &amp; 4\\
+1 &amp; 5
+\end{bmatrix}
+$$
+
+Matriks \(Y\):
+
+$$
+Y=
+\begin{bmatrix}
+2\\
+3\\
+5\\
+4\\
+3\\
+5\\
+6
+\end{bmatrix}
+$$
+
+---
+
+# Menghitung \(X^TX\)
+
+$$
+X^TX=
+\begin{bmatrix}
+7 &amp; 26\\
+26 &amp; 104
+\end{bmatrix}
+$$
+
+---
+
+# Menghitung Invers \((X^TX)^{-1}\)
+
+Rumus invers matriks 2×2:
+
+$$
+A^{-1}=
+\frac{1}{ad-bc}
+\begin{bmatrix}
+d &amp; -b\\
+-c &amp; a
+\end{bmatrix}
+$$
+
+Maka:
+
+$$
+(X^TX)^{-1}
+=
+\frac{1}{(7)(104)-(26)(26)}
+\begin{bmatrix}
+104 &amp; -26\\
+-26 &amp; 7
+\end{bmatrix}
+$$
+
+$$
+=
+\frac{1}{52}
+\begin{bmatrix}
+104 &amp; -26\\
+-26 &amp; 7
+\end{bmatrix}
+$$
+
+$$
+=
+\begin{bmatrix}
+2 &amp; -0.5\\
+-0.5 &amp; 0.1346
+\end{bmatrix}
+$$
+
+---
+
+# Menghitung \(X^TY\)
+
+$$
+X^TY=
+\begin{bmatrix}
+28\\
+111
+\end{bmatrix}
+$$
+
+---
+
+# Menghitung Koefisien Regresi
+
+$$
+\hat{\beta}
+=
+(X^TX)^{-1}X^TY
+$$
+
+$$
+=
+\begin{bmatrix}
+2 &amp; -0.5\\
+-0.5 &amp; 0.1346
+\end{bmatrix}
+\begin{bmatrix}
+28\\
+111
+\end{bmatrix}
+$$
+
+Hasil:
+
+$$
+\hat{\beta}
+=
+\begin{bmatrix}
+0.5\\
+0.9423
+\end{bmatrix}
+$$
+
+Sehingga diperoleh:
+
+$$
+\beta_0 = 0.5
+$$
+
+$$
+\beta_1 = 0.9423
+$$
+
+---
+
+# Persamaan Regresi Linier
+
+Persamaan regresi linier yang diperoleh adalah:
+
+$$
+y = 0.5 + 0.9423x
+$$
+
+Interpretasi:
+
+- Nilai intercept sebesar 0.5
+- Setiap kenaikan nilai \(x\) sebesar 1 akan meningkatkan nilai \(y\) sebesar 0.9423
+
+---
+
+# Program Python
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Data x dan y
+X = np.array([2, 4, 5, 3, 3, 4, 5]).reshape(-1, 1)
+Y = np.array([2, 3, 5, 4, 3, 5, 6])
+
+# Membuat model regresi
+model = LinearRegression()
+
+# Training model
+model.fit(X, Y)
+
+# Menampilkan hasil
+print(&quot;Intercept :&quot;, model.intercept_)
+print(&quot;Koefisien :&quot;, model.coef_[0])
+
+# Persamaan regresi
+print(f&quot;Persamaan regresi: y = {model.intercept_:.4f} + {model.coef_[0]:.4f}x&quot;)
+```
+
+Output:
+
+```text
+Intercept : 0.5
+Koefisien : 0.9423
+
+Persamaan regresi:
+y = 0.5000 + 0.9423x
+```
+
+---
+
+# Kesimpulan
+
+Berdasarkan hasil perhitungan regresi linier menggunakan metode analitik dan program Python, diperoleh persamaan:
+
+$$
+y = 0.5 + 0.9423x
+$$
+
+Persamaan tersebut menunjukkan bahwa variabel \(x\) memiliki hubungan positif terhadap variabel \(y\).
+
+![hasil](garis_regresi.png)
 </pre></div>
 </div>
 </section>
@@ -728,31 +1056,25 @@ y = 0.5 + 0.9423x
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analisis Data Menggunakan Regresi Linier</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">regresi_linear</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-data-menggunakan-regresi-linier">Analisis Data Menggunakan Regresi Linier</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-titik">Data Titik</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-menggunakan-geogebra">Visualisasi Data Menggunakan GeoGebra</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#titik-di-geogebra">Titik di GeoGebra</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-regresi"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-titik-di-geogebra">Input Titik di GeoGebra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-garis-regresi">Membuat Garis Regresi</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian-regresi-linier">Penyelesaian Regresi Linier</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#membentuk-matriks-x-dan-y">Membentuk Matriks X dan Y</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-x-tx">Menghitung (X^TX)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-invers-x-tx-1">Menghitung Invers ((X^TX)^{-1})</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#x-tx-1">[
-(X^TX)^{-1}</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">[</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">[</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-x-ty">Menghitung (X^TY)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-koefisien-regresi">Menghitung Koefisien Regresi</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hat-beta">[
-\hat{\beta}</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">[</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">[
-\hat{\beta}</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#persamaan-regresi-linier">Persamaan Regresi Linier</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#program-python">Program Python</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
 
