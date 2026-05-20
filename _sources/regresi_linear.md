@@ -23,34 +23,6 @@
 
 ---
 
-## Input Titik di GeoGebra
-
-Masukkan titik berikut pada bagian Input GeoGebra:
-
-```text
-A=(2,2)
-B=(4,3)
-C=(5,5)
-D=(3,4)
-E=(3,3)
-F=(4,5)
-G=(5,6)
-```
-
-📌 Input di atas digunakan untuk menampilkan scatter plot.
-
----
-
-## Membuat Garis Regresi
-
-Setelah semua titik muncul, masukkan perintah berikut:
-
-```text
-FitLine({A,B,C,D,E,F,G})
-```
-
-📌 Perintah tersebut digunakan untuk menghasilkan garis regresi linier pada GeoGebra.
-
 ---
 
 # Penyelesaian Regresi Linier
