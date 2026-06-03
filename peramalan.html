@@ -1,0 +1,949 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Laporan Analisis: Prediksi Kadar NO2 di Wilayah Talango Menggunakan KNN Regression &#8212; Panambangan Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'peramalan';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Markdown Files" href="markdown.html" />
+    <link rel="prev" title="regresi_linear" href="regresi_linear.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/qomar.JPG" class="logo__image only-light" alt="Panambangan Data - Home"/>
+    <script>document.write(`<img src="_static/qomar.JPG" class="logo__image only-dark" alt="Panambangan Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Perkenalan
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="business_understanding.html">Business Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_understanding.html">Data Understanding</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="data_preparation.html">Normalisasi Data (Preprocessing)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="modelling.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">uts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ujian_tengah_semester.html">🌱 Analisis Klasifikasi Kesuburan Tanah Menggunakan KNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="naive_bayes.html">Perhitungan Naive-bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decition_tree.html">Decision Tree Learner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="random_forest.html">Random Forest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regresi_linear.html">regresi_linear</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Laporan Analisis: Prediksi Kadar NO2 di Wilayah Talango Menggunakan KNN Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fperamalan.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/peramalan.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Laporan Analisis: Prediksi Kadar NO2 di Wilayah Talango Menggunakan KNN Regression</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">1. Pendahuluan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-kerja-pipeline">2. Alur Kerja (Pipeline)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detail-tahapan">3. Detail Tahapan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-library">3.1 Instalasi Library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-copernicus-data-space">3.2 Koneksi ke Copernicus Data Space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengambilan-data-sentinel-5p-no2">3.3 Pengambilan Data Sentinel-5P NO2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-file-netcdf">3.4 Eksplorasi File NetCDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolasi-nilai-hilang-spasial">3.5 Interpolasi Nilai Hilang (Spasial)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pembentukan-time-series-harian">3.6 Pembentukan Time Series Harian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-tanggal-yang-hilang">3.7 Penanganan Tanggal yang Hilang</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-dan-penanganan-outlier">3.8 Deteksi dan Penanganan Outlier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-korelasi-lag">3.9 Analisis Korelasi Lag</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pembentukan-dataset-supervised">3.10 Pembentukan Dataset Supervised</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-evaluasi-model-knn">3.11 Training &amp; Evaluasi Model KNN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">4. Visualisasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">5. Kesimpulan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saran-pengembangan">6. Saran Pengembangan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="laporan-analisis-prediksi-kadar-no2-di-wilayah-talango-menggunakan-knn-regression">
+<h1>Laporan Analisis: Prediksi Kadar NO2 di Wilayah Talango Menggunakan KNN Regression<a class="headerlink" href="#laporan-analisis-prediksi-kadar-no2-di-wilayah-talango-menggunakan-knn-regression" title="Permalink to this heading">#</a></h1>
+<p><strong>Sumber Data:</strong> Sentinel-5P L2 (Copernicus Data Space)<br />
+<strong>Periode Data:</strong> 1 Oktober 2024 – 1 Mei 2026<br />
+<strong>Lokasi:</strong> Talango, Sumenep, Jawa Timur, Indonesia<br />
+<strong>Metode:</strong> K-Nearest Neighbors (KNN) Regression</p>
+<hr class="docutils" />
+<section id="pendahuluan">
+<h2>1. Pendahuluan<a class="headerlink" href="#pendahuluan" title="Permalink to this heading">#</a></h2>
+<p>Notebook ini merupakan implementasi pipeline lengkap untuk mengambil, memproses, dan memprediksi data konsentrasi Nitrogen Dioksida (NO2) atmosfer di wilayah Talango, Kabupaten Sumenep, Jawa Timur. Data bersumber dari satelit <strong>Sentinel-5P</strong> melalui platform <strong>Copernicus Data Space Ecosystem (CDSE)</strong> yang diakses menggunakan library <code class="docutils literal notranslate"><span class="pre">openEO</span></code>. Model prediksi yang digunakan adalah <strong>K-Nearest Neighbors (KNN) Regression</strong> dengan variasi jumlah lag waktu.</p>
+</section>
+<hr class="docutils" />
+<section id="alur-kerja-pipeline">
+<h2>2. Alur Kerja (Pipeline)<a class="headerlink" href="#alur-kerja-pipeline" title="Permalink to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Instalasi Library
+     ↓
+Koneksi &amp; Autentikasi ke Copernicus (openEO)
+     ↓
+Pengambilan Data Sentinel-5P (NO2)
+     ↓
+Eksekusi Batch Job &amp; Download File .nc
+     ↓
+Eksplorasi &amp; Pembacaan File NetCDF
+     ↓
+Interpolasi Missing Value (Spasial)
+     ↓
+Agregasi Temporal → Time Series Harian
+     ↓
+Penanganan Tanggal Hilang
+     ↓
+Deteksi &amp; Penanganan Outlier (IQR)
+     ↓
+Pembentukan Dataset Supervised (Lag Features)
+     ↓
+Training &amp; Evaluasi Model KNN
+     ↓
+Visualisasi Hasil Prediksi
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="detail-tahapan">
+<h2>3. Detail Tahapan<a class="headerlink" href="#detail-tahapan" title="Permalink to this heading">#</a></h2>
+<section id="instalasi-library">
+<h3>3.1 Instalasi Library<a class="headerlink" href="#instalasi-library" title="Permalink to this heading">#</a></h3>
+<p>Library utama yang digunakan:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Library</p></th>
+<th class="head"><p>Versi</p></th>
+<th class="head"><p>Kegunaan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">openeo</span></code></p></td>
+<td><p>0.50.0</p></td>
+<td><p>Akses data satelit Copernicus</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">netCDF4</span></code></p></td>
+<td><p>1.7.4</p></td>
+<td><p>Membaca file format NetCDF (.nc)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">xarray</span></code></p></td>
+<td><p>2025.1.1</p></td>
+<td><p>Manipulasi data multidimensi</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></td>
+<td><p>—</p></td>
+<td><p>Komputasi numerik</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></td>
+<td><p>—</p></td>
+<td><p>Manipulasi data tabular</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p></td>
+<td><p>—</p></td>
+<td><p>Visualisasi data</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></p></td>
+<td><p>—</p></td>
+<td><p>Model machine learning</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="koneksi-ke-copernicus-data-space">
+<h3>3.2 Koneksi ke Copernicus Data Space<a class="headerlink" href="#koneksi-ke-copernicus-data-space" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;openeo.dataspace.copernicus.eu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Autentikasi dilakukan menggunakan <strong>OIDC device code flow</strong>, yang merupakan metode login berbasis browser yang aman untuk akses API Copernicus.</p>
+</section>
+<hr class="docutils" />
+<section id="pengambilan-data-sentinel-5p-no2">
+<h3>3.3 Pengambilan Data Sentinel-5P NO2<a class="headerlink" href="#pengambilan-data-sentinel-5p-no2" title="Permalink to this heading">#</a></h3>
+<p>Data diambil dari koleksi <code class="docutils literal notranslate"><span class="pre">SENTINEL_5P_L2</span></code> dengan konfigurasi berikut:</p>
+<ul class="simple">
+<li><p><strong>Band:</strong> NO2</p></li>
+<li><p><strong>Rentang waktu:</strong> 1 Oktober 2024 – 1 Mei 2026</p></li>
+<li><p><strong>Bounding Box (Spatial Extent):</strong></p>
+<ul>
+<li><p>West: 112.68 | East: 113.09</p></li>
+<li><p>South: -7.20 | North: -6.89</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Area of Interest (AOI)</strong> didefinisikan sebagai polygon GeoJSON dengan 13 titik koordinat yang melingkupi wilayah Talango secara lebih presisi.</p>
+<p>Setelah data diambil, dilakukan dua tahap agregasi:</p>
+<ol class="arabic simple">
+<li><p><strong>Agregasi temporal harian</strong> — nilai rata-rata per hari untuk menghindari duplikasi data dalam satu hari.</p></li>
+<li><p><strong>Agregasi spasial</strong> — nilai rata-rata di dalam area poligon AOI.</p></li>
+</ol>
+<p><strong>Eksekusi batch job:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="o">=</span> <span class="n">s5post</span><span class="o">.</span><span class="n">execute_batch</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO2 in Talango&quot;</span><span class="p">,</span> <span class="n">outputfile</span><span class="o">=</span><span class="s2">&quot;NO2Talango.nc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Job selesai dalam ±6 menit (status: <code class="docutils literal notranslate"><span class="pre">finished</span></code>, progress 100%).</p>
+</section>
+<hr class="docutils" />
+<section id="eksplorasi-file-netcdf">
+<h3>3.4 Eksplorasi File NetCDF<a class="headerlink" href="#eksplorasi-file-netcdf" title="Permalink to this heading">#</a></h3>
+<p>File hasil unduhan (<code class="docutils literal notranslate"><span class="pre">NO2Talango.nc</span></code>) dibaca menggunakan library <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code>. Struktur data yang ditemukan:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variabel</p></th>
+<th class="head"><p>Keterangan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">t</span></code></p></td>
+<td><p>Dimensi waktu</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<td><p>Dimensi longitude (8 kolom)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+<td><p>Dimensi latitude (9 baris)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">crs</span></code></p></td>
+<td><p>Informasi sistem koordinat</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NO2</span></code></p></td>
+<td><p>Nilai konsentrasi NO2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Dimensi data NO2:</strong> <code class="docutils literal notranslate"><span class="pre">(574</span> <span class="pre">timestep</span> <span class="pre">×</span> <span class="pre">9</span> <span class="pre">baris</span> <span class="pre">×</span> <span class="pre">8</span> <span class="pre">kolom)</span></code></p>
+<p>Data NO2 bertipe <code class="docutils literal notranslate"><span class="pre">numpy.ma.MaskedArray</span></code>, yang berarti terdapat banyak nilai yang tidak tersedia (<code class="docutils literal notranslate"><span class="pre">--</span></code>) akibat tutupan awan atau keterbatasan sensor satelit.</p>
+</section>
+<hr class="docutils" />
+<section id="interpolasi-nilai-hilang-spasial">
+<h3>3.5 Interpolasi Nilai Hilang (Spasial)<a class="headerlink" href="#interpolasi-nilai-hilang-spasial" title="Permalink to this heading">#</a></h3>
+<p>Karena banyak sel grid yang bernilai <code class="docutils literal notranslate"><span class="pre">--</span></code> (masked), dilakukan interpolasi linear per piksel (per grid point) menggunakan <code class="docutils literal notranslate"><span class="pre">pandas.Series.interpolate</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>     <span class="c1"># loop 9 baris</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span> <span class="c1"># loop 8 kolom</span>
+        <span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">no2</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+        <span class="n">no2_filled</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">limit_direction</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Setiap titik grid diinterpolasi secara independen sepanjang dimensi waktu.</p>
+</section>
+<hr class="docutils" />
+<section id="pembentukan-time-series-harian">
+<h3>3.6 Pembentukan Time Series Harian<a class="headerlink" href="#pembentukan-time-series-harian" title="Permalink to this heading">#</a></h3>
+<p>Setelah interpolasi spasial, nilai NO2 diagregasi menjadi satu nilai per hari dengan menghitung rata-rata seluruh grid:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_no2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">no2_filled</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Hasilnya disimpan sebagai DataFrame dengan kolom <code class="docutils literal notranslate"><span class="pre">date</span></code> dan <code class="docutils literal notranslate"><span class="pre">NO2</span></code>, lalu diekspor ke file CSV (<code class="docutils literal notranslate"><span class="pre">NO2_Talango_timeseries.csv</span></code>).</p>
+</section>
+<hr class="docutils" />
+<section id="penanganan-tanggal-yang-hilang">
+<h3>3.7 Penanganan Tanggal yang Hilang<a class="headerlink" href="#penanganan-tanggal-yang-hilang" title="Permalink to this heading">#</a></h3>
+<p>Pengecekan kelengkapan data terhadap rentang penuh 1 Oktober 2024 – 1 Mei 2026 menemukan <strong>4 tanggal yang hilang</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tanggal Hilang</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2025-01-30</p></td>
+</tr>
+<tr class="row-odd"><td><p>2025-01-31</p></td>
+</tr>
+<tr class="row-even"><td><p>2026-02-24</p></td>
+</tr>
+<tr class="row-odd"><td><p>2026-05-01</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Tanggal yang hilang diisi dengan <strong>interpolasi berbasis waktu</strong> (<code class="docutils literal notranslate"><span class="pre">method='time'</span></code>), lalu diverifikasi ulang — hasilnya <strong>0 tanggal yang hilang</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="deteksi-dan-penanganan-outlier">
+<h3>3.8 Deteksi dan Penanganan Outlier<a class="headerlink" href="#deteksi-dan-penanganan-outlier" title="Permalink to this heading">#</a></h3>
+<p>Metode yang digunakan adalah <strong>Interquartile Range (IQR)</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Lower Bound = Q1 - 1.5 × IQR
+Upper Bound = Q3 + 1.5 × IQR
+</pre></div>
+</div>
+<p><strong>Hasil deteksi:</strong> Ditemukan <strong>1 outlier</strong> pada tanggal <strong>17 Oktober 2024</strong> dengan nilai NO2 = <code class="docutils literal notranslate"><span class="pre">0.000047</span></code>.</p>
+<p>Outlier tersebut ditandai sebagai <code class="docutils literal notranslate"><span class="pre">NaN</span></code> kemudian diisi ulang menggunakan <strong>interpolasi linear</strong>, sehingga data akhir bersih dari outlier (0 missing value setelah interpolasi).</p>
+</section>
+<hr class="docutils" />
+<section id="analisis-korelasi-lag">
+<h3>3.9 Analisis Korelasi Lag<a class="headerlink" href="#analisis-korelasi-lag" title="Permalink to this heading">#</a></h3>
+<p>Sebelum membangun model, dilakukan analisis korelasi antara nilai NO2 hari ini <code class="docutils literal notranslate"><span class="pre">NO2(t)</span></code> dengan nilai pada hari-hari sebelumnya (<code class="docutils literal notranslate"><span class="pre">lag</span> <span class="pre">features</span></code>) hingga 30 hari ke belakang. Hasil menunjukkan pola yang konsisten:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Lag</p></th>
+<th class="head"><p>Korelasi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>t-1</p></td>
+<td><p><strong>0.9063</strong> (tertinggi)</p></td>
+</tr>
+<tr class="row-odd"><td><p>t-2</p></td>
+<td><p>0.8062</p></td>
+</tr>
+<tr class="row-even"><td><p>t-3</p></td>
+<td><p>0.7317</p></td>
+</tr>
+<tr class="row-odd"><td><p>t-4</p></td>
+<td><p>0.6736</p></td>
+</tr>
+<tr class="row-even"><td><p>t-7</p></td>
+<td><p>0.5837</p></td>
+</tr>
+<tr class="row-odd"><td><p>t-14</p></td>
+<td><p>0.4288</p></td>
+</tr>
+<tr class="row-even"><td><p>t-30</p></td>
+<td><p>0.3279 (terendah)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Semakin jauh lag waktu, semakin rendah korelasinya — yang berarti nilai NO2 hari sebelumnya sangat berpengaruh terhadap nilai hari ini.</p>
+</section>
+<hr class="docutils" />
+<section id="pembentukan-dataset-supervised">
+<h3>3.10 Pembentukan Dataset Supervised<a class="headerlink" href="#pembentukan-dataset-supervised" title="Permalink to this heading">#</a></h3>
+<p>Fungsi <code class="docutils literal notranslate"><span class="pre">create_supervised(data,</span> <span class="pre">n_lag)</span></code> digunakan untuk mengubah time series menjadi format supervised learning dengan fitur lag:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Versi</p></th>
+<th class="head"><p>Fitur Input</p></th>
+<th class="head"><p>Jumlah Baris</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">supervised_df</span></code> (lag=4)</p></td>
+<td><p>NO2(t-4) s.d. NO2(t-1)</p></td>
+<td><p>574 baris</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">supervised_df10</span></code> (lag=10)</p></td>
+<td><p>NO2(t-10) s.d. NO2(t-1)</p></td>
+<td><p>568 baris</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">supervised_df30</span></code> (lag=30)</p></td>
+<td><p>NO2(t-30) s.d. NO2(t-1)</p></td>
+<td><p>548 baris</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="training-evaluasi-model-knn">
+<h3>3.11 Training &amp; Evaluasi Model KNN<a class="headerlink" href="#training-evaluasi-model-knn" title="Permalink to this heading">#</a></h3>
+<p>Model yang digunakan adalah <code class="docutils literal notranslate"><span class="pre">KNeighborsRegressor</span></code> dengan <code class="docutils literal notranslate"><span class="pre">n_neighbors=5</span></code>. Data dibagi dengan rasio <strong>80:20</strong> (tanpa shuffle, menjaga urutan temporal).</p>
+<p><strong>Metrik Evaluasi:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Train Size</p></th>
+<th class="head"><p>Test Size</p></th>
+<th class="head"><p>RMSE</p></th>
+<th class="head"><p>R² Score</p></th>
+<th class="head"><p>MAPE</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>KNN – 4 Lag</p></td>
+<td><p>459</p></td>
+<td><p>115</p></td>
+<td><p>0.083874</p></td>
+<td><p><strong>0.7971</strong></p></td>
+<td><p>13.38%</p></td>
+</tr>
+<tr class="row-odd"><td><p>KNN – 10 Lag</p></td>
+<td><p>454</p></td>
+<td><p>114</p></td>
+<td><p>0.105595</p></td>
+<td><p>0.6667</p></td>
+<td><p>19.88%</p></td>
+</tr>
+<tr class="row-even"><td><p>KNN – 30 Lag</p></td>
+<td><p>438</p></td>
+<td><p>110</p></td>
+<td><p>0.000005</p></td>
+<td><p>0.2221</p></td>
+<td><p>16.06%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Catatan:</strong> RMSE yang sangat kecil pada KNN-30 (0.000005) namun R² yang rendah (0.22) mengindikasikan kemungkinan adanya kebocoran data atau efek dari data yang terlalu homogen di bagian akhir dataset (nilai NO2 yang konstan akibat interpolasi berulang).</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="visualisasi">
+<h2>4. Visualisasi<a class="headerlink" href="#visualisasi" title="Permalink to this heading">#</a></h2>
+<p>Notebook menghasilkan empat grafik utama:</p>
+<ol class="arabic simple">
+<li><p><strong>Grafik Deteksi Outlier (IQR)</strong> — menampilkan garis batas atas/bawah dan titik outlier berwarna merah.</p></li>
+<li><p><strong>Grafik NO2 Setelah Outlier Removal</strong> — data time series yang sudah bersih.</p></li>
+<li><p><strong>Grafik Prediksi KNN-4</strong> — perbandingan nilai aktual vs prediksi dengan lag 4 hari.</p></li>
+<li><p><strong>Grafik Prediksi KNN-10</strong> — perbandingan nilai aktual vs prediksi dengan lag 10 hari.</p></li>
+<li><p><strong>Grafik Prediksi KNN-30</strong> — perbandingan nilai aktual vs prediksi dengan lag 30 hari.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan">
+<h2>5. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Permalink to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspek</p></th>
+<th class="head"><p>Hasil</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Sumber data</p></td>
+<td><p>Sentinel-5P L2 via Copernicus openEO</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wilayah</p></td>
+<td><p>Talango, Sumenep, Jawa Timur</p></td>
+</tr>
+<tr class="row-even"><td><p>Periode</p></td>
+<td><p>Oktober 2024 – Mei 2026 (578 hari)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Outlier ditemukan</p></td>
+<td><p>1 titik (17 Oktober 2024)</p></td>
+</tr>
+<tr class="row-even"><td><p>Model terbaik</p></td>
+<td><p>KNN dengan lag 4 hari</p></td>
+</tr>
+<tr class="row-odd"><td><p>R² terbaik</p></td>
+<td><p>0.7971</p></td>
+</tr>
+<tr class="row-even"><td><p>MAPE terbaik</p></td>
+<td><p>13.38%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Model KNN dengan <strong>4 lag hari</strong> memberikan performa terbaik berdasarkan R² Score (0.80) dan MAPE (13.38%). Penambahan lag hari yang lebih panjang (10 dan 30 hari) justru menurunkan akurasi model, yang konsisten dengan hasil analisis korelasi yang menunjukkan lag pendek (t-1, t-2, t-3) memiliki korelasi jauh lebih tinggi.</p>
+</section>
+<hr class="docutils" />
+<section id="saran-pengembangan">
+<h2>6. Saran Pengembangan<a class="headerlink" href="#saran-pengembangan" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Mencoba model yang lebih kompleks seperti <strong>LSTM</strong> atau <strong>Random Forest</strong> untuk menangkap pola nonlinear.</p></li>
+<li><p>Menambahkan <strong>normalisasi/scaling</strong> yang konsisten antara data train dan test sebelum KNN.</p></li>
+<li><p>Melakukan <strong>hyperparameter tuning</strong> nilai <code class="docutils literal notranslate"><span class="pre">k</span></code> pada KNN (saat ini menggunakan k=5 secara default).</p></li>
+<li><p>Mempertimbangkan <strong>cross-validation time series</strong> (misal: TimeSeriesSplit) untuk evaluasi yang lebih robust.</p></li>
+<li><p>Menambahkan fitur eksogen seperti data cuaca atau musim untuk meningkatkan akurasi.</p></li>
+</ul>
+<hr class="docutils" />
+<p><em>Laporan ini dibuat berdasarkan analisis notebook Google Colab <code class="docutils literal notranslate"><span class="pre">Untitled0.ipynb</span></code>.</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="regresi_linear.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">regresi_linear</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="markdown.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Markdown Files</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">1. Pendahuluan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-kerja-pipeline">2. Alur Kerja (Pipeline)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detail-tahapan">3. Detail Tahapan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-library">3.1 Instalasi Library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-copernicus-data-space">3.2 Koneksi ke Copernicus Data Space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengambilan-data-sentinel-5p-no2">3.3 Pengambilan Data Sentinel-5P NO2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-file-netcdf">3.4 Eksplorasi File NetCDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolasi-nilai-hilang-spasial">3.5 Interpolasi Nilai Hilang (Spasial)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pembentukan-time-series-harian">3.6 Pembentukan Time Series Harian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-tanggal-yang-hilang">3.7 Penanganan Tanggal yang Hilang</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-dan-penanganan-outlier">3.8 Deteksi dan Penanganan Outlier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-korelasi-lag">3.9 Analisis Korelasi Lag</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pembentukan-dataset-supervised">3.10 Pembentukan Dataset Supervised</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-evaluasi-model-knn">3.11 Training &amp; Evaluasi Model KNN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">4. Visualisasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">5. Kesimpulan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saran-pengembangan">6. Saran Pengembangan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
