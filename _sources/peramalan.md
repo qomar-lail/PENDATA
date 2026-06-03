@@ -1,15 +1,15 @@
-# Laporan Analisis: Prediksi Kadar NO2 di Wilayah Talango Menggunakan KNN Regression
+# prediksi NO2 wilayah pakong, pamekasan
 
 **Sumber Data:** Sentinel-5P L2 (Copernicus Data Space)  
 **Periode Data:** 1 Oktober 2024 – 1 Mei 2026  
-**Lokasi:** Talango, Sumenep, Jawa Timur, Indonesia  
+**Lokasi:** pakong, pamekasan, Jawa Timur, Indonesia  
 **Metode:** K-Nearest Neighbors (KNN) Regression  
 
 ---
 
 ## 1. Pendahuluan
 
-Notebook ini merupakan implementasi pipeline lengkap untuk mengambil, memproses, dan memprediksi data konsentrasi Nitrogen Dioksida (NO2) atmosfer di wilayah Talango, Kabupaten Sumenep, Jawa Timur. Data bersumber dari satelit **Sentinel-5P** melalui platform **Copernicus Data Space Ecosystem (CDSE)** yang diakses menggunakan library `openEO`. Model prediksi yang digunakan adalah **K-Nearest Neighbors (KNN) Regression** dengan variasi jumlah lag waktu.
+Notebook ini merupakan implementasi pipeline lengkap untuk mengambil, memproses, dan memprediksi data konsentrasi Nitrogen Dioksida (NO2) atmosfer di wilayah pakong, Kabupaten pamekasan, Jawa Timur. Data bersumber dari satelit **Sentinel-5P** melalui platform **Copernicus Data Space Ecosystem (CDSE)** yang diakses menggunakan library `openEO`. Model prediksi yang digunakan adalah **K-Nearest Neighbors (KNN) Regression** dengan variasi jumlah lag waktu.
 
 ---
 
@@ -88,7 +88,7 @@ Data diambil dari koleksi `SENTINEL_5P_L2` dengan konfigurasi berikut:
 - **Rentang waktu:** 1 Oktober 2024 – 1 Mei 2026
 - **Bounding Box:** West: 112.68 | East: 113.09 | South: -7.20 | North: -6.89
 
-**Area of Interest (AOI)** didefinisikan sebagai polygon GeoJSON dengan 13 titik koordinat yang melingkupi wilayah Talango secara presisi.
+**Area of Interest (AOI)** didefinisikan sebagai polygon GeoJSON dengan 13 titik koordinat yang melingkupi wilayah pakong secara presisi.
 
 ```python
 aoi = {
@@ -135,7 +135,7 @@ s5p_no2_aoi = s5p_no2_daily.aggregate_spatial(reducer="mean", geometries=aoi)
 **Eksekusi batch job:**
 
 ```python
-job = s5post.execute_batch(title="NO2 in Talango", outputfile="NO2Talango.nc")
+job = s5post.execute_batch(title="NO2 in pakong", outputfile="NO2pakong.nc")
 ```
 
 Job selesai dalam ±6 menit (status: `finished`, progress 100%).
@@ -144,12 +144,12 @@ Job selesai dalam ±6 menit (status: `finished`, progress 100%).
 
 ### 3.4 Eksplorasi File NetCDF
 
-File hasil unduhan (`NO2Talango.nc`) dibaca menggunakan library `netCDF4`. Struktur data: dimensi `(574 timestep × 9 baris × 8 kolom)`.
+File hasil unduhan (`NO2pakong.nc`) dibaca menggunakan library `netCDF4`. Struktur data: dimensi `(574 timestep × 9 baris × 8 kolom)`.
 
 ```python
 import netCDF4
 
-file_path = "/content/NO2Talango.nc"
+file_path = "/content/NO2Pakong.nc"
 ds = netCDF4.Dataset(file_path)
 
 # Lihat seluruh variabel yang tersedia
@@ -232,7 +232,7 @@ df = pd.DataFrame({
 })
 
 # Simpan ke CSV
-df.to_csv("NO2_Talango_timeseries.csv", index=False)
+df.to_csv("NO2_pakong_timeseries.csv", index=False)
 ```
 
 ---
@@ -245,7 +245,7 @@ Pengecekan kelengkapan data menemukan **4 tanggal yang hilang**: 2025-01-30, 202
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv("NO2_Talango_timeseries.csv")
+df = pd.read_csv("NO2_pakong_timeseries.csv")
 df['date'] = pd.to_datetime(df['date'])
 
 # Buat rentang tanggal lengkap
@@ -558,7 +558,7 @@ plt.show()
 | Aspek | Hasil |
 |---|---|
 | Sumber data | Sentinel-5P L2 via Copernicus openEO |
-| Wilayah | Talango, Sumenep, Jawa Timur |
+| Wilayah | pakong, pamekasan, Jawa Timur |
 | Periode | Oktober 2024 – Mei 2026 (578 hari) |
 | Outlier ditemukan | 1 titik (17 Oktober 2024) |
 | Model terbaik | KNN dengan lag 4 hari |
@@ -568,7 +568,4 @@ plt.show()
 Model KNN dengan **4 lag hari** memberikan performa terbaik berdasarkan R² Score (0.80) dan MAPE (13.38%). Penambahan lag hari yang lebih panjang (10 dan 30 hari) justru menurunkan akurasi model, yang konsisten dengan hasil analisis korelasi yang menunjukkan lag pendek (t-1, t-2, t-3) memiliki korelasi jauh lebih tinggi.
 
 
----
 
-*Laporan ini dibuat berdasarkan analisis notebook Google Colab `Untitled0.ipynb`.file bisa di akses dibawah ini*
-*https://colab.research.google.com/drive/1HOCilhfmcWGiwvRSDF3pR4HIOLRyvlx3?usp=sharing*

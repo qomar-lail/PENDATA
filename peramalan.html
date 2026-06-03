@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Laporan Analisis: Prediksi Kadar NO2 di Wilayah Talango Menggunakan KNN Regression &#8212; Panambangan Data</title>
+    <title>prediksi NO2 wilayah pakong, pamekasan &#8212; Panambangan Data</title>
   
   
   
@@ -199,7 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Laporan Analisis: Prediksi Kadar NO2 di Wilayah Talango Menggunakan KNN Regression</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">prediksi NO2 wilayah pakong, pamekasan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
@@ -388,7 +388,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Laporan Analisis: Prediksi Kadar NO2 di Wilayah Talango Menggunakan KNN Regression</h1>
+    <h1>prediksi NO2 wilayah pakong, pamekasan</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -427,16 +427,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="laporan-analisis-prediksi-kadar-no2-di-wilayah-talango-menggunakan-knn-regression">
-<h1>Laporan Analisis: Prediksi Kadar NO2 di Wilayah Talango Menggunakan KNN Regression<a class="headerlink" href="#laporan-analisis-prediksi-kadar-no2-di-wilayah-talango-menggunakan-knn-regression" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="prediksi-no2-wilayah-pakong-pamekasan">
+<h1>prediksi NO2 wilayah pakong, pamekasan<a class="headerlink" href="#prediksi-no2-wilayah-pakong-pamekasan" title="Permalink to this heading">#</a></h1>
 <p><strong>Sumber Data:</strong> Sentinel-5P L2 (Copernicus Data Space)<br />
 <strong>Periode Data:</strong> 1 Oktober 2024 – 1 Mei 2026<br />
-<strong>Lokasi:</strong> Talango, Sumenep, Jawa Timur, Indonesia<br />
+<strong>Lokasi:</strong> pakong, pamekasan, Jawa Timur, Indonesia<br />
 <strong>Metode:</strong> K-Nearest Neighbors (KNN) Regression</p>
 <hr class="docutils" />
 <section id="pendahuluan">
 <h2>1. Pendahuluan<a class="headerlink" href="#pendahuluan" title="Permalink to this heading">#</a></h2>
-<p>Notebook ini merupakan implementasi pipeline lengkap untuk mengambil, memproses, dan memprediksi data konsentrasi Nitrogen Dioksida (NO2) atmosfer di wilayah Talango, Kabupaten Sumenep, Jawa Timur. Data bersumber dari satelit <strong>Sentinel-5P</strong> melalui platform <strong>Copernicus Data Space Ecosystem (CDSE)</strong> yang diakses menggunakan library <code class="docutils literal notranslate"><span class="pre">openEO</span></code>. Model prediksi yang digunakan adalah <strong>K-Nearest Neighbors (KNN) Regression</strong> dengan variasi jumlah lag waktu.</p>
+<p>Notebook ini merupakan implementasi pipeline lengkap untuk mengambil, memproses, dan memprediksi data konsentrasi Nitrogen Dioksida (NO2) atmosfer di wilayah pakong, Kabupaten pamekasan, Jawa Timur. Data bersumber dari satelit <strong>Sentinel-5P</strong> melalui platform <strong>Copernicus Data Space Ecosystem (CDSE)</strong> yang diakses menggunakan library <code class="docutils literal notranslate"><span class="pre">openEO</span></code>. Model prediksi yang digunakan adalah <strong>K-Nearest Neighbors (KNN) Regression</strong> dengan variasi jumlah lag waktu.</p>
 </section>
 <hr class="docutils" />
 <section id="alur-kerja-pipeline">
@@ -537,7 +537,7 @@ Visualisasi Hasil Prediksi
 <li><p><strong>Rentang waktu:</strong> 1 Oktober 2024 – 1 Mei 2026</p></li>
 <li><p><strong>Bounding Box:</strong> West: 112.68 | East: 113.09 | South: -7.20 | North: -6.89</p></li>
 </ul>
-<p><strong>Area of Interest (AOI)</strong> didefinisikan sebagai polygon GeoJSON dengan 13 titik koordinat yang melingkupi wilayah Talango secara presisi.</p>
+<p><strong>Area of Interest (AOI)</strong> didefinisikan sebagai polygon GeoJSON dengan 13 titik koordinat yang melingkupi wilayah pakong secara presisi.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">aoi</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
     <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -580,7 +580,7 @@ Visualisasi Hasil Prediksi
 </pre></div>
 </div>
 <p><strong>Eksekusi batch job:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="o">=</span> <span class="n">s5post</span><span class="o">.</span><span class="n">execute_batch</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO2 in Talango&quot;</span><span class="p">,</span> <span class="n">outputfile</span><span class="o">=</span><span class="s2">&quot;NO2Talango.nc&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="o">=</span> <span class="n">s5post</span><span class="o">.</span><span class="n">execute_batch</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO2 in pakong&quot;</span><span class="p">,</span> <span class="n">outputfile</span><span class="o">=</span><span class="s2">&quot;NO2pakong.nc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Job selesai dalam ±6 menit (status: <code class="docutils literal notranslate"><span class="pre">finished</span></code>, progress 100%).</p>
@@ -588,10 +588,10 @@ Visualisasi Hasil Prediksi
 <hr class="docutils" />
 <section id="eksplorasi-file-netcdf">
 <h3>3.4 Eksplorasi File NetCDF<a class="headerlink" href="#eksplorasi-file-netcdf" title="Permalink to this heading">#</a></h3>
-<p>File hasil unduhan (<code class="docutils literal notranslate"><span class="pre">NO2Talango.nc</span></code>) dibaca menggunakan library <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code>. Struktur data: dimensi <code class="docutils literal notranslate"><span class="pre">(574</span> <span class="pre">timestep</span> <span class="pre">×</span> <span class="pre">9</span> <span class="pre">baris</span> <span class="pre">×</span> <span class="pre">8</span> <span class="pre">kolom)</span></code>.</p>
+<p>File hasil unduhan (<code class="docutils literal notranslate"><span class="pre">NO2pakong.nc</span></code>) dibaca menggunakan library <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code>. Struktur data: dimensi <code class="docutils literal notranslate"><span class="pre">(574</span> <span class="pre">timestep</span> <span class="pre">×</span> <span class="pre">9</span> <span class="pre">baris</span> <span class="pre">×</span> <span class="pre">8</span> <span class="pre">kolom)</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">netCDF4</span>
 
-<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;/content/NO2Talango.nc&quot;</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;/content/NO2Pakong.nc&quot;</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
 
 <span class="c1"># Lihat seluruh variabel yang tersedia</span>
@@ -685,7 +685,7 @@ Visualisasi Hasil Prediksi
 <span class="p">})</span>
 
 <span class="c1"># Simpan ke CSV</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;NO2_Talango_timeseries.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;NO2_pakong_timeseries.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -696,7 +696,7 @@ Visualisasi Hasil Prediksi
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;NO2_Talango_timeseries.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;NO2_pakong_timeseries.csv&quot;</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
 
 <span class="c1"># Buat rentang tanggal lengkap</span>
@@ -1056,7 +1056,7 @@ Upper Bound = Q3 + 1.5 × IQR
 <td><p>Sentinel-5P L2 via Copernicus openEO</p></td>
 </tr>
 <tr class="row-odd"><td><p>Wilayah</p></td>
-<td><p>Talango, Sumenep, Jawa Timur</p></td>
+<td><p>pakong, pamekasan, Jawa Timur</p></td>
 </tr>
 <tr class="row-even"><td><p>Periode</p></td>
 <td><p>Oktober 2024 – Mei 2026 (578 hari)</p></td>
@@ -1077,9 +1077,6 @@ Upper Bound = Q3 + 1.5 × IQR
 </table>
 </div>
 <p>Model KNN dengan <strong>4 lag hari</strong> memberikan performa terbaik berdasarkan R² Score (0.80) dan MAPE (13.38%). Penambahan lag hari yang lebih panjang (10 dan 30 hari) justru menurunkan akurasi model, yang konsisten dengan hasil analisis korelasi yang menunjukkan lag pendek (t-1, t-2, t-3) memiliki korelasi jauh lebih tinggi.</p>
-<hr class="docutils" />
-<p><em>Laporan ini dibuat berdasarkan analisis notebook Google Colab <code class="docutils literal notranslate"><span class="pre">Untitled0.ipynb</span></code>.file bisa di akses dibawah ini</em>
-<em><a class="reference external" href="https://colab.research.google.com/drive/1HOCilhfmcWGiwvRSDF3pR4HIOLRyvlx3?usp=sharing">https://colab.research.google.com/drive/1HOCilhfmcWGiwvRSDF3pR4HIOLRyvlx3?usp=sharing</a></em></p>
 </section>
 </section>
 
