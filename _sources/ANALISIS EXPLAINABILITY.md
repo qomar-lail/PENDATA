@@ -19,7 +19,7 @@ Sebelum data latih dimasukkan ke dalam algoritma regresi pohon keputusan `LGBMRe
 ### B. Output (Target)
 * **Demand ($t+1$):** Total nilai permintaan energi listrik harian pada langkah waktu berikutnya yang menjadi target prediksi model.
 
-![alt text](i3_data.png)
+![alt text](3_data.png)
 
 ---
 
