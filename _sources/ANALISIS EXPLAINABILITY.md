@@ -19,7 +19,7 @@ Sebelum data latih dimasukkan ke dalam algoritma regresi pohon keputusan `LGBMRe
 ### B. Output (Target)
 * **Demand ($t+1$):** Total nilai permintaan energi listrik harian pada langkah waktu berikutnya yang menjadi target prediksi model.
 
-> **📌 JALANKAN KODE & MASUKKAN GAMBAR 1:** > *Silakan ambil screenshot dari output tabel data cetakan `X_train.head(3)` dan `y_train.head(3)` yang muncul di notebook Anda, lalu tempelkan di bawah blok ini.*
+![alt text](i3_data.png)
 
 ---
 
@@ -47,26 +47,26 @@ Pentingnya fitur dievaluasi menggunakan dua cara:
 1. **Gini Importance (`get_feature_importances()`):** Menghitung seberapa sering suatu fitur dipilih untuk memisahkan cabang pohon keputusan.
 2. **Permutation Importance:** Mengukur penurunan skor performa model secara acak pada fitur tertentu. Fitur yang paling merusak akurasi saat nilainya diacak dinilai sebagai fitur paling penting.
 
-> **📌 JALANKAN KODE & MASUKKAN GAMBAR 2:** > *Masukkan screenshot tabel ringkasan atau grafik dari variabel `importances` (Permutation Importance) di sini.*
+![alt text](tabel_ringkasan.png)
 
 ### Tahap 4: Analisis Nilai SHAP (Shapley Additive exPlanations)
 Menerapkan `shap.TreeExplainer` untuk melihat kontribusi linear maupun non-linear setiap fitur secara aditif:
 * **SHAP Summary Plot:** Menampilkan sebaran titik kontribusi. Warna merah menunjukkan nilai fitur tinggi, biru menunjukkan nilai fitur rendah. Dari grafik ini, kontribusi fitur `Temperature` dan `lag_1` terlihat paling mendominasi.
 
-> **📌 JALANKAN KODE & MASUKKAN GAMBAR 3:** > *Masukkan screenshot grafik sebaran titik warna merah-biru yang dihasilkan oleh `shap.summary_plot`.*
+![alt text](sumarry_plot.png)
 
 * **SHAP Local Force Plot:** Membedah kontribusi individual pada satu sampel baris data (observasi pertama) untuk melihat fitur mana yang mendorong nilai prediksi ke atas (zona merah) atau menurunkannya ke bawah (zona biru).
 
-> **📌 JALANKAN KODE & MASUKKAN GAMBAR 4:** > *Masukkan screenshot visualisasi garis dorongan horizontal (Force Plot) untuk observasi pertama di sini.*
+![alt text](froce_plot.png)
 
 * **SHAP Bar Plot (200 Observasi):** Menghitung nilai absolut rata-rata kontribusi SHAP pada 200 data pertama guna memvalidasi kepentingan fitur secara masal tanpa merusak batas rendering matplotlib.
 
-> **📌 JALANKAN KODE & MASUKKAN GAMBAR 5:** > *Masukkan screenshot grafik batang SHAP Feature Importance hasil dari modifikasi baris ke-80.*
+![alt text](observasi.png)
 
 ### Tahap 5: Partial Dependence Plot (PDP)
 Menggunakan `PartialDependenceDisplay` untuk melihat hubungan marjinal antara target dengan fitur `Temperature` dan `lag_1`. Pada fitur suhu, grafik akan menunjukkan karakteristik lengkungan non-linear berbentuk huruf **"U"**. Hal ini membuktikan interpretasi fisik bahwa beban permintaan listrik akan melonjak tinggi baik pada saat suhu udara sangat dingin (penggunaan pemanas) maupun saat suhu udara sangat panas (penggunaan AC).
 
-> **📌 JALANKAN KODE & MASUKKAN GAMBAR 6:** > *Masukkan screenshot grafik garis Partial Dependence Plot (PDP) yang muncul di bagian akhir eksekusi kode.*
+![alt text](dependence.png)
 
 ---
 

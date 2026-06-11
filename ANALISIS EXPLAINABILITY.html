@@ -452,9 +452,7 @@ document.write(`
 <ul class="simple">
 <li><p><strong>Demand (<span class="math notranslate nohighlight">\(t+1\)</span>):</strong> Total nilai permintaan energi listrik harian pada langkah waktu berikutnya yang menjadi target prediksi model.</p></li>
 </ul>
-<blockquote>
-<div><p><strong>📌 JALANKAN KODE &amp; MASUKKAN GAMBAR 1:</strong> &gt; <em>Silakan ambil screenshot dari output tabel data cetakan <code class="docutils literal notranslate"><span class="pre">X_train.head(3)</span></code> dan <code class="docutils literal notranslate"><span class="pre">y_train.head(3)</span></code> yang muncul di notebook Anda, lalu tempelkan di bawah blok ini.</em></p>
-</div></blockquote>
+<p><img alt="alt text" src="i3_data.png" /></p>
 </section>
 </section>
 <hr class="docutils" />
@@ -489,9 +487,7 @@ document.write(`
 <li><p><strong>Gini Importance (<code class="docutils literal notranslate"><span class="pre">get_feature_importances()</span></code>):</strong> Menghitung seberapa sering suatu fitur dipilih untuk memisahkan cabang pohon keputusan.</p></li>
 <li><p><strong>Permutation Importance:</strong> Mengukur penurunan skor performa model secara acak pada fitur tertentu. Fitur yang paling merusak akurasi saat nilainya diacak dinilai sebagai fitur paling penting.</p></li>
 </ol>
-<blockquote>
-<div><p><strong>📌 JALANKAN KODE &amp; MASUKKAN GAMBAR 2:</strong> &gt; <em>Masukkan screenshot tabel ringkasan atau grafik dari variabel <code class="docutils literal notranslate"><span class="pre">importances</span></code> (Permutation Importance) di sini.</em></p>
-</div></blockquote>
+<p><img alt="alt text" src="_images/tabel_ringkasan.png" /></p>
 </section>
 <section id="tahap-4-analisis-nilai-shap-shapley-additive-explanations">
 <h3>Tahap 4: Analisis Nilai SHAP (Shapley Additive exPlanations)<a class="headerlink" href="#tahap-4-analisis-nilai-shap-shapley-additive-explanations" title="Permalink to this heading">#</a></h3>
@@ -499,28 +495,20 @@ document.write(`
 <ul class="simple">
 <li><p><strong>SHAP Summary Plot:</strong> Menampilkan sebaran titik kontribusi. Warna merah menunjukkan nilai fitur tinggi, biru menunjukkan nilai fitur rendah. Dari grafik ini, kontribusi fitur <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> dan <code class="docutils literal notranslate"><span class="pre">lag_1</span></code> terlihat paling mendominasi.</p></li>
 </ul>
-<blockquote>
-<div><p><strong>📌 JALANKAN KODE &amp; MASUKKAN GAMBAR 3:</strong> &gt; <em>Masukkan screenshot grafik sebaran titik warna merah-biru yang dihasilkan oleh <code class="docutils literal notranslate"><span class="pre">shap.summary_plot</span></code>.</em></p>
-</div></blockquote>
+<p><img alt="alt text" src="_images/sumarry_plot.png" /></p>
 <ul class="simple">
 <li><p><strong>SHAP Local Force Plot:</strong> Membedah kontribusi individual pada satu sampel baris data (observasi pertama) untuk melihat fitur mana yang mendorong nilai prediksi ke atas (zona merah) atau menurunkannya ke bawah (zona biru).</p></li>
 </ul>
-<blockquote>
-<div><p><strong>📌 JALANKAN KODE &amp; MASUKKAN GAMBAR 4:</strong> &gt; <em>Masukkan screenshot visualisasi garis dorongan horizontal (Force Plot) untuk observasi pertama di sini.</em></p>
-</div></blockquote>
+<p><img alt="alt text" src="_images/froce_plot.png" /></p>
 <ul class="simple">
 <li><p><strong>SHAP Bar Plot (200 Observasi):</strong> Menghitung nilai absolut rata-rata kontribusi SHAP pada 200 data pertama guna memvalidasi kepentingan fitur secara masal tanpa merusak batas rendering matplotlib.</p></li>
 </ul>
-<blockquote>
-<div><p><strong>📌 JALANKAN KODE &amp; MASUKKAN GAMBAR 5:</strong> &gt; <em>Masukkan screenshot grafik batang SHAP Feature Importance hasil dari modifikasi baris ke-80.</em></p>
-</div></blockquote>
+<p><img alt="alt text" src="_images/observasi.png" /></p>
 </section>
 <section id="tahap-5-partial-dependence-plot-pdp">
 <h3>Tahap 5: Partial Dependence Plot (PDP)<a class="headerlink" href="#tahap-5-partial-dependence-plot-pdp" title="Permalink to this heading">#</a></h3>
 <p>Menggunakan <code class="docutils literal notranslate"><span class="pre">PartialDependenceDisplay</span></code> untuk melihat hubungan marjinal antara target dengan fitur <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> dan <code class="docutils literal notranslate"><span class="pre">lag_1</span></code>. Pada fitur suhu, grafik akan menunjukkan karakteristik lengkungan non-linear berbentuk huruf <strong>“U”</strong>. Hal ini membuktikan interpretasi fisik bahwa beban permintaan listrik akan melonjak tinggi baik pada saat suhu udara sangat dingin (penggunaan pemanas) maupun saat suhu udara sangat panas (penggunaan AC).</p>
-<blockquote>
-<div><p><strong>📌 JALANKAN KODE &amp; MASUKKAN GAMBAR 6:</strong> &gt; <em>Masukkan screenshot grafik garis Partial Dependence Plot (PDP) yang muncul di bagian akhir eksekusi kode.</em></p>
-</div></blockquote>
+<p><img alt="alt text" src="_images/dependence.png" /></p>
 </section>
 </section>
 <hr class="docutils" />
